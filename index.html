@@ -1,0 +1,335 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>BigStupidX</title>
+  <meta name="author" content="bigstupidx">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="BigStupidX"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">BigStupidX</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 <div class="page-header">
+  <h1>May The Force Be With You!</h1>
+</div>
+
+<div class="row page">
+
+	
+	<div class="col-md-9">
+	
+
+		<div class="slogan">
+      <i class="fa fa-heart"></i>
+      学无止境
+</div>    
+		<div id="top_search"></div>
+		<div class="mypage">
+		
+		<!-- title and entry -->
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2015-11-05 </div>
+			<div class="article-title"><a href="/2015/11/05/POJ-3974-Palindrome/" >POJ 3974 Palindrome</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p><strong>题目大意</strong>:<br><strong>“给一个小写字符串（长度最长达到10w），找出其中最长回文串的长度”</strong></p>
+<p>看到这个题目的数据范围就傻逼了，不会做。。猜测可能是后缀数组或者AC自动机之类的算法，但这么多AC的题目我居然不会做，有点不甘心啊，看来应该是个经典题，就找了下</p>
+<ol>
+<li>后缀数组好像确实可以，复杂度O(nlogn)，但是我早忘光了。。</li>
+<li>Manacher算法，复杂度O(n)，但是没学过啊。。</li>
+</ol>
+<p>不会就学一下！</p>
+<p>Manacher算法思想还是很简单的，假设一个串是回文串，那么从必然左右对称，那么如果求出了对称中左半部分是个回文串，那么右边部分的最小可能值就出来了</p>
+<p>具体看这个，有图还是容易理解一些：<br><a href="http://www.felix021.com/blog/read.php?2040" target="_blank" rel="external">http://www.felix021.com/blog/read.php?2040</a><br>或者这个：<br><a href="http://blog.sina.com.cn/s/blog_70811e1a01014esn.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_70811e1a01014esn.html</a></p>
+<p>本题AC代码：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">define</span> _CRT_SECURE_NO_WARNINGS</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;map&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;set&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#<span class="keyword">define</span> MAXN <span class="number">2000010</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> str[MAXN], tmp[MAXN];<span class="comment">//1000000*2+10</span></span><br><span class="line"><span class="keyword">int</span> p[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">solve</span><span class="params">(<span class="keyword">char</span> str[], <span class="keyword">int</span> p[])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len = <span class="built_in">strlen</span>(str);</span><br><span class="line">    <span class="built_in">memset</span>(p, <span class="number">0</span>, <span class="keyword">sizeof</span>(p));</span><br><span class="line">    <span class="keyword">int</span> id = <span class="number">0</span>, mx = <span class="number">0</span>;</span><br><span class="line"><span class="comment">//    p[0] = 1;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (mx &lt;= i)</span><br><span class="line">            p[i] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            p[i] = min(mx - i, p[<span class="number">2</span> * id - i]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (i - p[i] &gt;= <span class="number">0</span> &amp;&amp; i + p[i] &lt; len &amp;&amp; str[i - p[i]] == str[i + p[i]])</span><br><span class="line">            p[i]++;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (i + p[i] &gt; mx) &#123;</span><br><span class="line">            mx = p[i] + i;</span><br><span class="line">            id = i;</span><br><span class="line">        &#125;</span><br><span class="line">        ans = max(ans, p[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans - <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> nca = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">"%s"</span>, tmp) != EOF) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">strcmp</span>(tmp, <span class="string">"END"</span>) == <span class="number">0</span>)<span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">int</span> len = <span class="built_in">strlen</span>(tmp), k = <span class="number">2</span>;</span><br><span class="line">        str[<span class="number">0</span>] = <span class="string">'?'</span>;</span><br><span class="line">        str[<span class="number">1</span>] = <span class="string">'#'</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            str[k++] = tmp[i];</span><br><span class="line">            str[k++] = <span class="string">'#'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        str[k] = <span class="string">'\0'</span>;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Case %d: %d\n"</span>, nca++, solve(str, p));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>其实算法核心只有不到10行，赞！</p>
+
+	
+	</div>
+  <a type="button" href="/2015/11/05/POJ-3974-Palindrome/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2015-11-03 </div>
+			<div class="article-title"><a href="/2015/11/03/git-时遇到fatal-multiple-stage-entries-for-merged-file处理办法/" >git 时遇到fatal:multiple stage entries for merged file处理办法</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p><strong>进入到git的根目录下</strong></p>
+<ol>
+<li>rm .git/index</li>
+<li>git add ./</li>
+<li>git commit -am “信息”</li>
+</ol>
+
+	
+	</div>
+  <a type="button" href="/2015/11/03/git-时遇到fatal-multiple-stage-entries-for-merged-file处理办法/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2015-11-03 </div>
+			<div class="article-title"><a href="/2015/11/03/POJ-3752-字母旋转游戏/" >POJ 3752 字母旋转游戏</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>每日一水</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">define</span> _CRT_SECURE_NO_WARNINGS</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;map&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;set&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m, ans[<span class="number">1002</span>][<span class="number">1002</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">//方向变化方向依次是：向右、向下、向左、向上</span></span><br><span class="line"><span class="keyword">int</span> dir[<span class="number">4</span>][<span class="number">2</span>] = &#123; <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">0</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m) != EOF) &#123;</span><br><span class="line">        <span class="keyword">int</span> cnt = n * m;</span><br><span class="line">        <span class="built_in">memset</span>(ans, -<span class="number">1</span>, <span class="keyword">sizeof</span>(ans));</span><br><span class="line">        <span class="keyword">int</span> k = <span class="number">0</span>, start = <span class="number">0</span>, ii = <span class="number">0</span>, jj = <span class="number">0</span>, i, j;</span><br><span class="line">        <span class="keyword">while</span> (cnt &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            ans[ii][jj] = start;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//判断是否转向</span></span><br><span class="line">            i = dir[k][<span class="number">0</span>] + ii;</span><br><span class="line">            j = dir[k][<span class="number">1</span>] + jj;</span><br><span class="line">            <span class="keyword">if</span> (i &lt; <span class="number">0</span> || j &lt; <span class="number">0</span> || i &gt;= n || j &gt;= m || ans[i][j] != -<span class="number">1</span>)</span><br><span class="line">                k = (k + <span class="number">1</span>) % <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">            start = (start + <span class="number">1</span>) % <span class="number">26</span>;</span><br><span class="line">            ii = ii + dir[k][<span class="number">0</span>];</span><br><span class="line">            jj = jj + dir[k][<span class="number">1</span>];</span><br><span class="line">            --cnt;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"   %c"</span>, <span class="string">'A'</span> + ans[i][j]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">""</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+	
+	</div>
+  <a type="button" href="/2015/11/03/POJ-3752-字母旋转游戏/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+
+		</div>
+
+		<!-- pagination -->
+		<div>
+  		<center>
+		<div class="pagination">
+<ul class="pagination">
+	 
+</ul>
+</div>
+
+  		</center>
+		</div>
+
+		
+		
+	</div> <!-- col-md-9 -->
+
+	
+		<div class="col-md-3">
+	<div id="sidebar">
+	
+			
+  <div id="site_search">
+   <div class="form-group">
+    <input type="text" id="local-search-input" name="q" results="0" placeholder="搜索" class="st-search-input st-default-search-input form-control"/>
+   </div>  
+  <div id="local-search-result"></div>
+  </div>
+
+
+		
+			
+	<div class="widget">
+		<h4>分类</h4>
+		<ul class="tag_box inline list-unstyled">
+		
+			<li><a href="/categories/POJ/">POJ<span>2</span></a></li>
+		
+		</ul>
+	</div>
+
+		
+			
+	<div class="widget">
+		<h4>标签云</h4>
+		<ul class="tag_box inline list-unstyled">		
+		
+			<li><a href="/tags/bug/">bug<span>1</span></a></li>
+		
+			<li><a href="/tags/POJ/">POJ<span>2</span></a></li>
+		
+			<li><a href="/tags/Manacher/">Manacher<span>1</span></a></li>
+		
+			<li><a href="/tags/ACM/">ACM<span>2</span></a></li>
+		
+			<li><a href="/tags/字符串/">字符串<span>1</span></a></li>
+		
+			<li><a href="/tags/git/">git<span>1</span></a></li>
+		
+			<li><a href="/tags/回文串/">回文串<span>1</span></a></li>
+		
+			<li><a href="/tags/后缀数组/">后缀数组<span>1</span></a></li>
+		
+		 
+		</ul>
+	</div>
+
+
+		
+			
+<div class="widget">
+  <h4>最新文章</h4>
+  <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/2015/11/05/POJ-3974-Palindrome/" ><i class="fa fa-file-o"></i>POJ 3974 Palindrome...</a>
+      </li>
+    
+      <li>
+        <a href="/2015/11/03/git-时遇到fatal-multiple-stage-entries-for-merged-file处理办法/" ><i class="fa fa-file-o"></i>git 时遇到fatal:multiple stage...</a>
+      </li>
+    
+      <li>
+        <a href="/2015/11/03/POJ-3752-字母旋转游戏/" ><i class="fa fa-file-o"></i>POJ 3752 字母旋转游戏...</a>
+      </li>
+    
+  </ul>
+</div>
+
+		
+			
+<div class="widget">
+	<h4>链接</h4>
+	<ul class="blogroll list-unstyled">
+	
+		<li><i class="fa fa-github"></i><a href="https://github.com/wzpan/freemind/" title="Freemind's Github repository." target="_blank"]);">Freemind</a></li>
+	
+		<li><i class="fa fa-github"></i><a href="http://www.github.com/bigstupidx" title="My Github account." target="_blank"]);">我的Github</a></li>
+	
+		<li><i class="fa fa-weibo"></i><a href="http://weibo.com/u/1963313501" title="My Weibo." target="_blank"]);">我的微博</a></li>
+	
+	</ul>
+</div>
+
+
+		
+	</div> <!-- sidebar -->
+</div> <!-- col-md-3 -->
+
+	
+	
+</div> <!-- row-fluid -->
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 bigstupidx
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>
