@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title><![CDATA[Eclipse ADT ZIP包离线安装]]></title>
+      <url>http://yoursite.com/2015/11/10/Eclipse-ADT-%E5%AE%89%E8%A3%85/</url>
+      <content type="html"><![CDATA[<p>官网的做法如下：<br><a href="http://developer.android.com/sdk/installing/installing-adt.html" target="_blank" rel="external">http://developer.android.com/sdk/installing/installing-adt.html</a></p>
+<ol>
+<li><p>Download the ADT Plugin zip file (do not unpack it):</p>
+</li>
+<li><p>Start Eclipse, then select <strong>Help</strong> &gt; <strong>Install New Software</strong>.</p>
+</li>
+<li>Click <strong>Add</strong>, in the top-right corner.</li>
+<li>In the Add Repository dialog, click <strong>Archive</strong>.</li>
+<li>Select the downloaded ADT-23.0.6.zip file and click OK.</li>
+<li>Enter “ADT Plugin” for the name and click OK.</li>
+<li>In the Available Software dialog, select the checkbox next to Developer Tools and click Next.</li>
+<li>In the next window, you’ll see a list of the tools to be downloaded. Click Next.</li>
+<li>Read and accept the license agreements, then click Finish.<br>If you get a security warning saying that the authenticity or validity of the software can’t be established, click OK.</li>
+<li>When the installation completes, restart Eclipse.</li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Mac Android ADB环境变量设置]]></title>
       <url>http://yoursite.com/2015/11/10/Mac-Android-ADB%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE/</url>
       <content type="html"><![CDATA[<ol>
@@ -26,7 +47,7 @@
       <content type="html"><![CDATA[<ol>
 <li><p>启动 Android SDK Manager ，打开主界面，依次选择「Tools」、「Options…」，弹出『Android SDK Manager - Settings』窗口；</p>
 </li>
-<li><p>在『Android SDK Manager - Settings』窗口中，在「HTTP Proxy Server」和「HTTP Proxy Port」输入框内填入 mirrors.neusoft.edu.cn 和 80，并且选中 <em>Force https://… sources to be fetched using http://…</em>复选框。设置完成后单击「Close」按钮关闭『Android SDK Manager - Settings』窗口返回到主界面；</p>
+<li><p>在『Android SDK Manager - Settings』窗口中，在「HTTP Proxy Server」和「HTTP Proxy Port」输入框内填入 <strong>mirrors.neusoft.edu.cn</strong> 和 <strong>80</strong>，并且选中 <em>Force https://… sources to be fetched using http://…</em>复选框。设置完成后单击「Close」按钮关闭『Android SDK Manager - Settings』窗口返回到主界面；</p>
 </li>
 <li><p>依次选择「Packages」、「Reload」。</p>
 </li>
