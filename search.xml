@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title><![CDATA[Mac Android ADB环境变量设置]]></title>
+      <url>http://yoursite.com/2015/11/10/Mac-Android-ADB%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE/</url>
+      <content type="html"><![CDATA[<ol>
+<li>启动Terminal终端工具</li>
+<li>输入cd ~/ 进入当前用户的home目录</li>
+<li>vim .bash_profile</li>
+<li><p>在文件尾部加入以下内容：</p>
+<pre><code>export <span class="constant">PATH=</span><span class="variable">${</span><span class="constant">PATH}</span><span class="symbol">:/android_sdk/tools</span><span class="symbol">:/android_sdk/platform-tools</span>
+</code></pre></li>
+<li><p>终端执行 <code>source .bash_profile</code> </p>
+</li>
+<li>验证：输入adb回车。如果未显示command not found，说明此命令有效，环境便亮设置完成。</li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[Android SDK Manager 代理设置]]></title>
+      <url>http://yoursite.com/2015/11/10/Android-SDK-Manager-%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE/</url>
+      <content type="html"><![CDATA[<ol>
+<li><p>启动 Android SDK Manager ，打开主界面，依次选择「Tools」、「Options…」，弹出『Android SDK Manager - Settings』窗口；</p>
+</li>
+<li><p>在『Android SDK Manager - Settings』窗口中，在「HTTP Proxy Server」和「HTTP Proxy Port」输入框内填入 mirrors.neusoft.edu.cn 和 80，并且选中「Force https://… sources to be fetched using <a href="http://...」复选框。设置完成后单击「Close」按钮关闭『Android" target="_blank" rel="external">http://...」复选框。设置完成后单击「Close」按钮关闭『Android</a> SDK Manager - Settings』窗口返回到主界面；</p>
+</li>
+<li><p>依次选择「Packages」、「Reload」。</p>
+</li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[POJ 3974 Palindrome]]></title>
       <url>http://yoursite.com/2015/11/05/POJ-3974-Palindrome/</url>
       <content type="html"><![CDATA[<p><strong>题目大意</strong>:<br><strong>“给一个小写字符串（长度最长达到10w），找出其中最长回文串的长度”</strong></p>
