@@ -3,19 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Eclipse ADT ZIP包离线安装 | BigStupidX</title>
+  <title>mac homebrew 安装erlang特定版本 | BigStupidX</title>
   <meta name="author" content="bigstupidx">
   
-  <meta name="description" content="官网的做法如下：http://developer.android.com/sdk/installing/installing-adt.html
+  <meta name="description" content="当前最新版是R18，但最新版有些代码和现在服务器代码不太兼容，需要使用R17
 
-Download the ADT Plugin zip file (do not unpack it):
-
-Start Eclipse, then sel">
+如果直接使用brew install erlang则直接安装的是最新版
+使用brew install erl再选择version的方法brew install homebrew/versions/erlang-r17好像">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Eclipse ADT ZIP包离线安装"/>
+  <meta property="og:title" content="mac homebrew 安装erlang特定版本"/>
   <meta property="og:site_name" content="BigStupidX"/>
 
   
@@ -94,7 +93,7 @@ Start Eclipse, then sel">
 
 	
 		<div class="page-header">		
-			<h1> Eclipse ADT ZIP包离线安装</h1>
+			<h1> mac homebrew 安装erlang特定版本</h1>
 		</div>		
 	
 
@@ -111,21 +110,25 @@ Start Eclipse, then sel">
 	<div class="mypage">		
 	  		
 
-	  <p>官网的做法如下：<br><a href="http://developer.android.com/sdk/installing/installing-adt.html" target="_blank" rel="external">http://developer.android.com/sdk/installing/installing-adt.html</a></p>
-<ol>
-<li><p>Download the ADT Plugin zip file (do not unpack it):</p>
-</li>
-<li><p>Start Eclipse, then select <strong>Help</strong> &gt; <strong>Install New Software</strong>.</p>
-</li>
-<li>Click <strong>Add</strong>, in the top-right corner.</li>
-<li>In the Add Repository dialog, click <strong>Archive</strong>.</li>
-<li>Select the downloaded ADT-23.0.6.zip file and click OK.</li>
-<li>Enter “ADT Plugin” for the name and click OK.</li>
-<li>In the Available Software dialog, select the checkbox next to Developer Tools and click Next.</li>
-<li>In the next window, you’ll see a list of the tools to be downloaded. Click Next.</li>
-<li>Read and accept the license agreements, then click Finish.<br>If you get a security warning saying that the authenticity or validity of the software can’t be established, click OK.</li>
-<li>When the installation completes, restart Eclipse.</li>
-</ol>
+	  <p>当前最新版是<code>R18</code>，但最新版有些代码和现在服务器代码不太兼容，需要使用<code>R17</code></p>
+<ul>
+<li>如果直接使用<code>brew install erlang</code>则直接安装的是最新版</li>
+<li>使用<code>brew install erl</code>再选择version的方法<br><code>brew install homebrew/versions/erlang-r17</code><br>好像erlang的官网被墙，最后最是在下载man这一步死掉</li>
+</ul>
+<p>后面有尝试下载源代码的方式</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://www.erlang.org/download/otp_src_17.5.tar.gz&#10;tar -zxvf otp_src_17.5.tar.gz&#10;cd otp_src_17.5&#10;sudo ./configure  --prefix=/opt/erlang&#10;sudo make&#10;sudo make install</span><br></pre></td></tr></table></figure>
+<p>但在执行config的时候出现下面情况</p>
+<blockquote>
+<hr>
+<p><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong>  APPLICATIONS DISABLED  <strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></p>
+<hr>
+<p>crypto         : No usable OpenSSL found<br>ssh            : No usable OpenSSL found<br>ssl            : No usable OpenSSL found</p>
+<hr>
+</blockquote>
+<p>即表示openssl没有安装，但是自己调用openssl是ok的。。</p>
+<p>找来找去<br>最后在<a href="https://github.com/elixir-lang/elixir/issues/1748" target="_blank" rel="external">github上的一个帖子</a><br>的最后找到openssl的问题，使用如下命令：</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install -vd --<span class="keyword">with</span>-ssl=<span class="regexp">/usr/bin</span><span class="regexp">/openssl homebrew/versions</span><span class="regexp">/erlang-r17</span></span><br></pre></td></tr></table></figure>
+<p>中途也会卡在man和html的地方，我直接选择ignore的方式，最后居然成功了，。。。</p>
 	  
 	</div>
 
@@ -134,14 +137,14 @@ Start Eclipse, then sel">
 	<div class="pagination">
 <ul class="pagination">
 	 
-				
-    	<li class="prev"><a href="/2015/11/15/mac-homebrew-安装erlang特定版本/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
-  		
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+        
 
         <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
 
 		
-		   <li class="next"><a href="/2015/11/10/Mac-Android-ADB环境变量设置/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+		   <li class="next"><a href="/2015/11/10/Eclipse-ADT-安装/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
         
 	
 </ul>
@@ -156,7 +159,7 @@ Start Eclipse, then sel">
   <h2 class="title">留言</h2>
 
   
-  	 <div class="ds-thread" data-thread-key="2015/11/10/Eclipse-ADT-安装/" data-title="Eclipse ADT ZIP包离线安装" data-url="http://yoursite.com/2015/11/10/Eclipse-ADT-安装/"></div>  
+  	 <div class="ds-thread" data-thread-key="2015/11/15/mac-homebrew-安装erlang特定版本/" data-title="mac homebrew 安装erlang特定版本" data-url="http://yoursite.com/2015/11/15/mac-homebrew-安装erlang特定版本/"></div>  
   
 </section>
 
@@ -170,7 +173,7 @@ Start Eclipse, then sel">
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	2015-11-10 
+	2015-11-15 
 	</div>
 	
 

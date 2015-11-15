@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title><![CDATA[mac homebrew 安装erlang特定版本]]></title>
+      <url>http://yoursite.com/2015/11/15/mac-homebrew-%E5%AE%89%E8%A3%85erlang%E7%89%B9%E5%AE%9A%E7%89%88%E6%9C%AC/</url>
+      <content type="html"><![CDATA[<p>当前最新版是<code>R18</code>，但最新版有些代码和现在服务器代码不太兼容，需要使用<code>R17</code></p>
+<ul>
+<li>如果直接使用<code>brew install erlang</code>则直接安装的是最新版</li>
+<li>使用<code>brew install erl</code>再选择version的方法<br><code>brew install homebrew/versions/erlang-r17</code><br>好像erlang的官网被墙，最后最是在下载man这一步死掉</li>
+</ul>
+<p>后面有尝试下载源代码的方式</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://www.erlang.org/download/otp_src_17.5.tar.gz&#10;tar -zxvf otp_src_17.5.tar.gz&#10;cd otp_src_17.5&#10;sudo ./configure  --prefix=/opt/erlang&#10;sudo make&#10;sudo make install</span><br></pre></td></tr></table></figure>
+<p>但在执行config的时候出现下面情况</p>
+<blockquote>
+<hr>
+<p><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong>  APPLICATIONS DISABLED  <strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></p>
+<hr>
+<p>crypto         : No usable OpenSSL found<br>ssh            : No usable OpenSSL found<br>ssl            : No usable OpenSSL found</p>
+<hr>
+</blockquote>
+<p>即表示openssl没有安装，但是自己调用openssl是ok的。。</p>
+<p>找来找去<br>最后在<a href="https://github.com/elixir-lang/elixir/issues/1748" target="_blank" rel="external">github上的一个帖子</a><br>的最后找到openssl的问题，使用如下命令：</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install -vd --<span class="keyword">with</span>-ssl=<span class="regexp">/usr/bin</span><span class="regexp">/openssl homebrew/versions</span><span class="regexp">/erlang-r17</span></span><br></pre></td></tr></table></figure>
+<p>中途也会卡在man和html的地方，我直接选择ignore的方式，最后居然成功了，。。。</p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Eclipse ADT ZIP包离线安装]]></title>
       <url>http://yoursite.com/2015/11/10/Eclipse-ADT-%E5%AE%89%E8%A3%85/</url>
       <content type="html"><![CDATA[<p>官网的做法如下：<br><a href="http://developer.android.com/sdk/installing/installing-adt.html" target="_blank" rel="external">http://developer.android.com/sdk/installing/installing-adt.html</a></p>
