@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Android SDK Manager 代理设置 | BigStupidX</title>
+  <title>mac homebrew 安装erlang特定版本 | BigStupidX</title>
   <meta name="author" content="bigstupidx">
   
-  <meta name="description" content="启动 Android SDK Manager ，打开主界面，依次选择「Tools」、「Options…」，弹出『Android SDK Manager - Settings』窗口；
+  <meta name="description" content="当前最新版是R18，但最新版有些代码和现在服务器代码不太兼容，需要使用R17
 
-在『Android SDK Manager - Settings』窗口中，在「HTTP Proxy Server」和">
+如果直接使用brew install erlang则直接安装的是最新版
+使用brew install erl再选择version的方法brew install homebrew/versions/erlang-r17好像">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="Android SDK Manager 代理设置"/>
+  <meta property="og:title" content="mac homebrew 安装erlang特定版本"/>
   <meta property="og:site_name" content="BigStupidX"/>
 
   
@@ -92,7 +93,7 @@
 
 	
 		<div class="page-header">		
-			<h1> Android SDK Manager 代理设置</h1>
+			<h1> mac homebrew 安装erlang特定版本</h1>
 		</div>		
 	
 
@@ -109,14 +110,27 @@
 	<div class="mypage">		
 	  		
 
-	  <ol>
-<li><p>启动 Android SDK Manager ，打开主界面，依次选择「Tools」、「Options…」，弹出『Android SDK Manager - Settings』窗口；</p>
-</li>
-<li><p>在『Android SDK Manager - Settings』窗口中，在「HTTP Proxy Server」和「HTTP Proxy Port」输入框内填入 <strong>mirrors.neusoft.edu.cn</strong> 和 <strong>80</strong>，并且选中 <em>Force https://… sources to be fetched using http://…</em>复选框。设置完成后单击「Close」按钮关闭『Android SDK Manager - Settings』窗口返回到主界面；</p>
-</li>
-<li><p>依次选择「Packages」、「Reload」。</p>
-</li>
-</ol>
+	  <p>当前最新版是<code>R18</code>，但最新版有些代码和现在服务器代码不太兼容，需要使用<code>R17</code></p>
+<ul>
+<li>如果直接使用<code>brew install erlang</code>则直接安装的是最新版</li>
+<li>使用<code>brew install erl</code>再选择version的方法<br><code>brew install homebrew/versions/erlang-r17</code><br>好像erlang的官网被墙，最后最是在下载man这一步死掉</li>
+</ul>
+<p>后面有尝试下载源代码的方式</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://www.erlang.org/download/otp_src_17.5.tar.gz&#10;tar -zxvf otp_src_17.5.tar.gz&#10;cd otp_src_17.5&#10;sudo ./configure  --prefix=/opt/erlang&#10;sudo make&#10;sudo make install</span><br></pre></td></tr></table></figure>
+<p>但在执行config的时候出现下面情况</p>
+<blockquote>
+<hr>
+<p><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong>  APPLICATIONS DISABLED  <strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></p>
+<hr>
+<p>crypto         : No usable OpenSSL found<br>ssh            : No usable OpenSSL found<br>ssl            : No usable OpenSSL found</p>
+<hr>
+</blockquote>
+<p>即表示openssl没有安装，但是自己调用openssl是ok的。。</p>
+<p>找来找去<br>最后在<a href="https://github.com/elixir-lang/elixir/issues/1748" target="_blank" rel="external">github上的一个帖子</a><br>的最后找到openssl的问题，使用如下命令：</p>
+<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install -vd --<span class="keyword">with</span>-ssl=<span class="regexp">/usr/bin</span><span class="regexp">/openssl homebrew/versions</span><span class="regexp">/erlang-r17</span></span><br></pre></td></tr></table></figure>
+<p>中途也会卡在man和html的地方，我直接选择ignore的方式，最后居然成功了，。。。</p>
+<hr>
+<p>以上是MAC下安装经历的问题，如果是在ubuntu下面，遇到类似的bug，下面这个链接可能有所帮助<br><a href="https://sites.google.com/site/comptekkia/erlang/how-to-install-erlang-on-ubuntu-10-10" target="_blank" rel="external">How to Install Erlang on Ubuntu 10.10</a></p>
 	  
 	</div>
 
@@ -125,14 +139,14 @@
 	<div class="pagination">
 <ul class="pagination">
 	 
-				
-    	<li class="prev"><a href="/2015/11/10/Mac-Android-ADB环境变量设置/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
-  		
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+        
 
         <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
 
 		
-		   <li class="next"><a href="/2015/11/05/POJ-3974-Palindrome/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+		   <li class="next"><a href="/Eclipse-ADT-安装/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
         
 	
 </ul>
@@ -147,7 +161,7 @@
   <h2 class="title">留言</h2>
 
   
-  	 <div class="ds-thread" data-thread-key="2015/11/10/Android-SDK-Manager-代理设置/" data-title="Android SDK Manager 代理设置" data-url="http://yoursite.com/2015/11/10/Android-SDK-Manager-代理设置/"></div>  
+  	 <div class="ds-thread" data-thread-key="mac-homebrew-安装erlang特定版本/" data-title="mac homebrew 安装erlang特定版本" data-url="http://yoursite.com/mac-homebrew-安装erlang特定版本/"></div>  
   
 </section>
 
@@ -161,12 +175,23 @@
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	2015-11-10 
+	2015-11-15 
 	</div>
 	
 
 	<!-- categories -->
     
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/环境配置/">环境配置<span>2</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
 
 	<!-- tags -->
 	
@@ -174,7 +199,7 @@
 	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
     <ul id="tags" class="tag_box list-unstyled collapse in">	  
 	    
-  <li><a href="/tags/Android/">Android<span>2</span></a></li>
+  <li><a href="/tags/环境配置/">环境配置<span>2</span></a></li>
     </ul>
 	</div>
 		

@@ -5,7 +5,7 @@
     
     <entry>
       <title><![CDATA[mac homebrew 安装erlang特定版本]]></title>
-      <url>http://yoursite.com/2015/11/15/mac-homebrew-%E5%AE%89%E8%A3%85erlang%E7%89%B9%E5%AE%9A%E7%89%88%E6%9C%AC/</url>
+      <url>http://yoursite.com/mac-homebrew-%E5%AE%89%E8%A3%85erlang%E7%89%B9%E5%AE%9A%E7%89%88%E6%9C%AC/</url>
       <content type="html"><![CDATA[<p>当前最新版是<code>R18</code>，但最新版有些代码和现在服务器代码不太兼容，需要使用<code>R17</code></p>
 <ul>
 <li>如果直接使用<code>brew install erlang</code>则直接安装的是最新版</li>
@@ -32,7 +32,7 @@
     
     <entry>
       <title><![CDATA[Eclipse ADT ZIP包离线安装]]></title>
-      <url>http://yoursite.com/2015/11/10/Eclipse-ADT-%E5%AE%89%E8%A3%85/</url>
+      <url>http://yoursite.com/Eclipse-ADT-%E5%AE%89%E8%A3%85/</url>
       <content type="html"><![CDATA[<p>官网的做法如下：<br><a href="http://developer.android.com/sdk/installing/installing-adt.html" target="_blank" rel="external">http://developer.android.com/sdk/installing/installing-adt.html</a></p>
 <ol>
 <li><p>Download the ADT Plugin zip file (do not unpack it):</p>
@@ -53,7 +53,7 @@
     
     <entry>
       <title><![CDATA[Mac Android ADB环境变量设置]]></title>
-      <url>http://yoursite.com/2015/11/10/Mac-Android-ADB%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE/</url>
+      <url>http://yoursite.com/Mac-Android-ADB%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E8%AE%BE%E7%BD%AE/</url>
       <content type="html"><![CDATA[<ol>
 <li>启动Terminal终端工具</li>
 <li>输入cd ~/ 进入当前用户的home目录</li>
@@ -70,7 +70,7 @@
     
     <entry>
       <title><![CDATA[Android SDK Manager 代理设置]]></title>
-      <url>http://yoursite.com/2015/11/10/Android-SDK-Manager-%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE/</url>
+      <url>http://yoursite.com/Android-SDK-Manager-%E4%BB%A3%E7%90%86%E8%AE%BE%E7%BD%AE/</url>
       <content type="html"><![CDATA[<ol>
 <li><p>启动 Android SDK Manager ，打开主界面，依次选择「Tools」、「Options…」，弹出『Android SDK Manager - Settings』窗口；</p>
 </li>
@@ -84,7 +84,7 @@
     
     <entry>
       <title><![CDATA[POJ 3974 Palindrome]]></title>
-      <url>http://yoursite.com/2015/11/05/POJ-3974-Palindrome/</url>
+      <url>http://yoursite.com/POJ-3974-Palindrome/</url>
       <content type="html"><![CDATA[<p><strong>题目大意</strong>:<br><strong>“给一个小写字符串（长度最长达到10w），找出其中最长回文串的长度”</strong></p>
 <p>看到这个题目的数据范围就傻逼了，不会做。。猜测可能是后缀数组或者AC自动机之类的算法，但这么多AC的题目我居然不会做，有点不甘心啊，看来应该是个经典题，就找了下</p>
 <ol>
@@ -101,7 +101,7 @@
     
     <entry>
       <title><![CDATA[git 时遇到fatal:multiple stage entries for merged file处理办法]]></title>
-      <url>http://yoursite.com/2015/11/03/git-%E6%97%B6%E9%81%87%E5%88%B0fatal-multiple-stage-entries-for-merged-file%E5%A4%84%E7%90%86%E5%8A%9E%E6%B3%95/</url>
+      <url>http://yoursite.com/git-%E6%97%B6%E9%81%87%E5%88%B0fatal-multiple-stage-entries-for-merged-file%E5%A4%84%E7%90%86%E5%8A%9E%E6%B3%95/</url>
       <content type="html"><![CDATA[<p><strong>进入到git的根目录下</strong></p>
 <ol>
 <li>rm .git/index</li>
@@ -113,7 +113,7 @@
     
     <entry>
       <title><![CDATA[POJ 3752 字母旋转游戏]]></title>
-      <url>http://yoursite.com/2015/11/03/POJ-3752-%E5%AD%97%E6%AF%8D%E6%97%8B%E8%BD%AC%E6%B8%B8%E6%88%8F/</url>
+      <url>http://yoursite.com/POJ-3752-%E5%AD%97%E6%AF%8D%E6%97%8B%E8%BD%AC%E6%B8%B8%E6%88%8F/</url>
       <content type="html"><![CDATA[<p>每日一水</p>
 <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">#<span class="keyword">define</span> _CRT_SECURE_NO_WARNINGS</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;map&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;set&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="preprocessor">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, m, ans[<span class="number">1002</span>][<span class="number">1002</span>];</span><br><span class="line"></span><br><span class="line"><span class="comment">//方向变化方向依次是：向右、向下、向左、向上</span></span><br><span class="line"><span class="keyword">int</span> dir[<span class="number">4</span>][<span class="number">2</span>] = &#123; <span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">0</span>, <span class="number">0</span>, -<span class="number">1</span>, -<span class="number">1</span>, <span class="number">0</span> &#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m) != EOF) &#123;</span><br><span class="line">        <span class="keyword">int</span> cnt = n * m;</span><br><span class="line">        <span class="built_in">memset</span>(ans, -<span class="number">1</span>, <span class="keyword">sizeof</span>(ans));</span><br><span class="line">        <span class="keyword">int</span> k = <span class="number">0</span>, start = <span class="number">0</span>, ii = <span class="number">0</span>, jj = <span class="number">0</span>, i, j;</span><br><span class="line">        <span class="keyword">while</span> (cnt &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            ans[ii][jj] = start;</span><br><span class="line"></span><br><span class="line">            <span class="comment">//判断是否转向</span></span><br><span class="line">            i = dir[k][<span class="number">0</span>] + ii;</span><br><span class="line">            j = dir[k][<span class="number">1</span>] + jj;</span><br><span class="line">            <span class="keyword">if</span> (i &lt; <span class="number">0</span> || j &lt; <span class="number">0</span> || i &gt;= n || j &gt;= m || ans[i][j] != -<span class="number">1</span>)</span><br><span class="line">                k = (k + <span class="number">1</span>) % <span class="number">4</span>;</span><br><span class="line"></span><br><span class="line">            start = (start + <span class="number">1</span>) % <span class="number">26</span>;</span><br><span class="line">            ii = ii + dir[k][<span class="number">0</span>];</span><br><span class="line">            jj = jj + dir[k][<span class="number">1</span>];</span><br><span class="line">            --cnt;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; m; j++) &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"   %c"</span>, <span class="string">'A'</span> + ans[i][j]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">puts</span>(<span class="string">""</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
     </entry>
