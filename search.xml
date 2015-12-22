@@ -33,46 +33,6 @@
     </entry>
     
     <entry>
-      <title><![CDATA[新建hudson项目注意事项及建议]]></title>
-      <url>http://yoursite.com/%E6%96%B0%E5%BB%BAhudson%E9%A1%B9%E7%9B%AE%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%E5%8F%8A%E5%BB%BA%E8%AE%AE/</url>
-      <content type="html"><![CDATA[<p>#新建hudson项目注意事项及建议：</p>
-<hr>
-<p><strong>为了安全考虑，关闭自己新建或者配置job的权限，新建或者修改设置请发送邮件到<code>wangjunyong@doodlemobile.com</code>或者<code>xuming@doodlemobile.com</code></strong></p>
-<hr>
-<p>###注意事项：</p>
-<ol>
-<li>项目<strong>名称不允许有空格</strong></li>
-<li>新建项目时候建议配置从其他项目<strong>copy</strong>，即<code>Copy existing job</code>，然后再<strong>更改git地址</strong>和<strong>更改脚本</strong></li>
-<li><p>关于脚本选择：(git上files中所能看到的文件夹为WORKSPACE/)  </p>
-<ol>
-<li><p>如果android项目直接在WORKSPACE，使用<br><code>sample-git-14-new.sh outputApkName</code></p>
-</li>
-<li><p>如果android项目在WORKSPACE/folderName这种形式，使用<br><code>sample-git-14-new-path.sh outputApkName folderName</code></p>
-</li>
-<li><p><strong>如果android项目带有lib项目，比如googleservices，那么需要lib项目和android项目以（WORKSPACE/androidProjectName，WORKSPACE/libProjectName）形式放在git下面，使用</strong>（参考<a href="http://192.168.1.100:9090/job/pool_master/" target="_blank" rel="external">PoolMaster项目</a>）<br><code>sample-git-14-new-pathxx.sh outputApkName androidProjectName libProjectName</code></p>
-</li>
-</ol>
-</li>
-<li><p><strong>Unity自动编译配置</strong>，基本配置如上，需要注意的是设置中需要<strong>Restrict where this job can be run</strong>选中，并指定node为<code>slave－unity</code>这个节点（这是另外一个机器，是mac系统） 另外脚本选择为<code>unity-compile.sh</code>，使用格式是：(可参考<a href="http://192.168.1.100:9090/job/test_unity/" target="_blank" rel="external">test_unity项目</a>)<br><code>unity-compile.sh outputApkName androidProjectFolderName libProjectFolderName</code> </p>
-<blockquote>
-<p>unityFolderName<br>–project<br>—-androidProjectFolderName<br>—-libProjectFolderName<br>—-unityFolderName  </p>
-</blockquote>
-</li>
-<li><p>hudson签名功能：对于未签名包，然后上传到git上，签名脚本为：<code>samplesignapk.sh</code>或者<code>samplesignmultiapk.sh</code><br>具体使用格式是：<br><code>samplesignapk.sh outputFileName</code><br>需要注意是自己导出的包后缀需要为<code>*-unsigned.apk</code></p>
-</li>
-<li><p>第一次<code>build</code>可能会出错，可以不予理会，再<code>build</code>一次</p>
-</li>
-</ol>
-<hr>
-<p>###一点建议</p>
-<ol>
-<li>每次build都可以单独添加说明，这个说明与git无关</li>
-<li>每次发布之后将发布的那个build版本点一下<code>Keep this build forever</code>，并且添加说明版本号码，这样就不会因为新的提交而把之前的版本删掉（hudson默认最多保存15个build，超过的时候会把之前最早的build删除，如此往复），这样可以很方便的找到以前的版本，如<a href="http://192.168.1.100:9090/job/pool_master/" target="_blank" rel="external">PoolMaster</a></li>
-</ol>
-]]></content>
-    </entry>
-    
-    <entry>
       <title><![CDATA[mac homebrew 安装erlang特定版本]]></title>
       <url>http://yoursite.com/mac-homebrew-%E5%AE%89%E8%A3%85erlang%E7%89%B9%E5%AE%9A%E7%89%88%E6%9C%AC/</url>
       <content type="html"><![CDATA[<p>当前最新版是<code>R18</code>，但最新版有些代码和现在服务器代码不太兼容，需要使用<code>R17</code></p>
