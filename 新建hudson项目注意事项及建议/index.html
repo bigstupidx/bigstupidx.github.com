@@ -3,18 +3,22 @@
 <head>
   <meta charset="utf-8">
   
-  <title>mac homebrew 安装erlang特定版本 | BigStupidX</title>
+  <title>新建hudson项目注意事项及建议 | BigStupidX</title>
   <meta name="author" content="bigstupidx">
   
-  <meta name="description" content="当前最新版是R18，但最新版有些代码和现在服务器代码不太兼容，需要使用R17
+  <meta name="description" content="#新建hudson项目注意事项及建议：
 
-如果直接使用brew install erlang则直接安装的是最新版
-使用brew install erl再选择version的方法brew install homebrew/versions/erlang-r17好像">
+为了安全考虑，关闭自己新建或者配置job的权限，新建或者修改设置请发送邮件到wangjunyong@doodlemobile.com或者xuming@doodlemobile.com
+
+###注意事项：
+
+项目名称不允许有空格
+新建项目时候建议配置从其他项目">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="mac homebrew 安装erlang特定版本"/>
+  <meta property="og:title" content="新建hudson项目注意事项及建议"/>
   <meta property="og:site_name" content="BigStupidX"/>
 
   
@@ -93,7 +97,7 @@
 
 	
 		<div class="page-header">		
-			<h1> mac homebrew 安装erlang特定版本</h1>
+			<h1> 新建hudson项目注意事项及建议</h1>
 		</div>		
 	
 
@@ -110,27 +114,40 @@
 	<div class="mypage">		
 	  		
 
-	  <p>当前最新版是<code>R18</code>，但最新版有些代码和现在服务器代码不太兼容，需要使用<code>R17</code></p>
-<ul>
-<li>如果直接使用<code>brew install erlang</code>则直接安装的是最新版</li>
-<li>使用<code>brew install erl</code>再选择version的方法<br><code>brew install homebrew/versions/erlang-r17</code><br>好像erlang的官网被墙，最后最是在下载man这一步死掉</li>
-</ul>
-<p>后面有尝试下载源代码的方式</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://www.erlang.org/download/otp_src_17.5.tar.gz&#10;tar -zxvf otp_src_17.5.tar.gz&#10;cd otp_src_17.5&#10;sudo ./configure  --prefix=/opt/erlang&#10;sudo make&#10;sudo make install</span><br></pre></td></tr></table></figure>
-<p>但在执行config的时候出现下面情况</p>
+	  <p>#新建hudson项目注意事项及建议：</p>
+<hr>
+<p><strong>为了安全考虑，关闭自己新建或者配置job的权限，新建或者修改设置请发送邮件到<code>wangjunyong@doodlemobile.com</code>或者<code>xuming@doodlemobile.com</code></strong></p>
+<hr>
+<p>###注意事项：</p>
+<ol>
+<li>项目<strong>名称不允许有空格</strong></li>
+<li>新建项目时候建议配置从其他项目<strong>copy</strong>，即<code>Copy existing job</code>，然后再<strong>更改git地址</strong>和<strong>更改脚本</strong></li>
+<li><p>关于脚本选择：(git上files中所能看到的文件夹为WORKSPACE/)  </p>
+<ol>
+<li><p>如果android项目直接在WORKSPACE，使用<br><code>sample-git-14-new.sh outputApkName</code></p>
+</li>
+<li><p>如果android项目在WORKSPACE/folderName这种形式，使用<br><code>sample-git-14-new-path.sh outputApkName folderName</code></p>
+</li>
+<li><p><strong>如果android项目带有lib项目，比如googleservices，那么需要lib项目和android项目以（WORKSPACE/androidProjectName，WORKSPACE/libProjectName）形式放在git下面，使用</strong>（参考<a href="http://192.168.1.100:9090/job/pool_master/" target="_blank" rel="external">PoolMaster项目</a>）<br><code>sample-git-14-new-pathxx.sh outputApkName androidProjectName libProjectName</code></p>
+</li>
+</ol>
+</li>
+<li><p><strong>Unity自动编译配置</strong>，基本配置如上，需要注意的是设置中需要<strong>Restrict where this job can be run</strong>选中，并指定node为<code>slave－unity</code>这个节点（这是另外一个机器，是mac系统） 另外脚本选择为<code>unity-compile.sh</code>，使用格式是：(可参考<a href="http://192.168.1.100:9090/job/test_unity/" target="_blank" rel="external">test_unity项目</a>)<br><code>unity-compile.sh outputApkName androidProjectFolderName libProjectFolderName</code> </p>
 <blockquote>
-<hr>
-<p><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong>  APPLICATIONS DISABLED  <strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></p>
-<hr>
-<p>crypto         : No usable OpenSSL found<br>ssh            : No usable OpenSSL found<br>ssl            : No usable OpenSSL found</p>
-<hr>
+<p>unityFolderName<br>–project<br>—-androidProjectFolderName<br>—-libProjectFolderName<br>—-unityFolderName  </p>
 </blockquote>
-<p>即表示openssl没有安装，但是自己调用openssl是ok的。。</p>
-<p>找来找去<br>最后在<a href="https://github.com/elixir-lang/elixir/issues/1748" target="_blank" rel="external">github上的一个帖子</a><br>的最后找到openssl的问题，使用如下命令：</p>
-<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install -vd --<span class="keyword">with</span>-ssl=<span class="regexp">/usr/bin</span><span class="regexp">/openssl homebrew/versions</span><span class="regexp">/erlang-r17</span></span><br></pre></td></tr></table></figure>
-<p>中途也会卡在man和html的地方，我直接选择ignore的方式，最后居然成功了，。。。</p>
+</li>
+<li><p>hudson签名功能：对于未签名包，然后上传到git上，签名脚本为：<code>samplesignapk.sh</code>或者<code>samplesignmultiapk.sh</code><br>具体使用格式是：<br><code>samplesignapk.sh outputFileName</code><br>需要注意是自己导出的包后缀需要为<code>*-unsigned.apk</code></p>
+</li>
+<li><p>第一次<code>build</code>可能会出错，可以不予理会，再<code>build</code>一次</p>
+</li>
+</ol>
 <hr>
-<p>以上是MAC下安装经历的问题，如果是在ubuntu下面，遇到类似的bug，下面这个链接可能有所帮助<br><a href="https://sites.google.com/site/comptekkia/erlang/how-to-install-erlang-on-ubuntu-10-10" target="_blank" rel="external">How to Install Erlang on Ubuntu 10.10</a></p>
+<p>###一点建议</p>
+<ol>
+<li>每次build都可以单独添加说明，这个说明与git无关</li>
+<li>每次发布之后将发布的那个build版本点一下<code>Keep this build forever</code>，并且添加说明版本号码，这样就不会因为新的提交而把之前的版本删掉（hudson默认最多保存15个build，超过的时候会把之前最早的build删除，如此往复），这样可以很方便的找到以前的版本，如<a href="http://192.168.1.100:9090/job/pool_master/" target="_blank" rel="external">PoolMaster</a></li>
+</ol>
 	  
 	</div>
 
@@ -140,13 +157,13 @@
 <ul class="pagination">
 	 
 				
-    	<li class="prev"><a href="/新建hudson项目注意事项及建议/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+    	<li class="prev"><a href="/linux-free-command/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
   		
 
         <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
 
 		
-		   <li class="next"><a href="/Eclipse-ADT-安装/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+		   <li class="next"><a href="/mac-homebrew-安装erlang特定版本/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
         
 	
 </ul>
@@ -161,7 +178,7 @@
   <h2 class="title">留言</h2>
 
   
-  	 <div class="ds-thread" data-thread-key="mac-homebrew-安装erlang特定版本/" data-title="mac homebrew 安装erlang特定版本" data-url="http://yoursite.com/mac-homebrew-安装erlang特定版本/"></div>  
+  	 <div class="ds-thread" data-thread-key="新建hudson项目注意事项及建议/" data-title="新建hudson项目注意事项及建议" data-url="http://yoursite.com/新建hudson项目注意事项及建议/"></div>  
   
 </section>
 
@@ -175,33 +192,14 @@
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	2015-11-15 
+	2015-11-17 
 	</div>
 	
 
 	<!-- categories -->
     
-	<div class="meta-widget">
-	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
-    <ul id="categorys" class="tag_box list-unstyled collapse in">
-          
-  <li>
-    <li><a href="/categories/环境配置/">环境配置<span>2</span></a></li>
-  </li>
-
-    </ul>
-	</div>
-	
 
 	<!-- tags -->
-	
-	<div class="meta-widget">
-	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
-    <ul id="tags" class="tag_box list-unstyled collapse in">	  
-	    
-  <li><a href="/tags/环境配置/">环境配置<span>2</span></a></li>
-    </ul>
-	</div>
 		
 
 	<!-- toc -->

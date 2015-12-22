@@ -3,18 +3,17 @@
 <head>
   <meta charset="utf-8">
   
-  <title>mac homebrew 安装erlang特定版本 | BigStupidX</title>
+  <title>Linux free 命令 | BigStupidX</title>
   <meta name="author" content="bigstupidx">
   
-  <meta name="description" content="当前最新版是R18，但最新版有些代码和现在服务器代码不太兼容，需要使用R17
-
-如果直接使用brew install erlang则直接安装的是最新版
-使用brew install erl再选择version的方法brew install homebrew/versions/erlang-r17好像">
+  <meta name="description" content="#Linux free 命令
+linux中的free命令可以查看内存使用情况，带参数-m表示按照Mb为单位输出，也可以带其他参数
+123456fruits@100:~$ free -m             total       used       free     shared    buf">
   
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-  <meta property="og:title" content="mac homebrew 安装erlang特定版本"/>
+  <meta property="og:title" content="Linux free 命令"/>
   <meta property="og:site_name" content="BigStupidX"/>
 
   
@@ -93,7 +92,7 @@
 
 	
 		<div class="page-header">		
-			<h1> mac homebrew 安装erlang特定版本</h1>
+			<h1> Linux free 命令</h1>
 		</div>		
 	
 
@@ -110,27 +109,29 @@
 	<div class="mypage">		
 	  		
 
-	  <p>当前最新版是<code>R18</code>，但最新版有些代码和现在服务器代码不太兼容，需要使用<code>R17</code></p>
-<ul>
-<li>如果直接使用<code>brew install erlang</code>则直接安装的是最新版</li>
-<li>使用<code>brew install erl</code>再选择version的方法<br><code>brew install homebrew/versions/erlang-r17</code><br>好像erlang的官网被墙，最后最是在下载man这一步死掉</li>
-</ul>
-<p>后面有尝试下载源代码的方式</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://www.erlang.org/download/otp_src_17.5.tar.gz&#10;tar -zxvf otp_src_17.5.tar.gz&#10;cd otp_src_17.5&#10;sudo ./configure  --prefix=/opt/erlang&#10;sudo make&#10;sudo make install</span><br></pre></td></tr></table></figure>
-<p>但在执行config的时候出现下面情况</p>
-<blockquote>
-<hr>
-<p><strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong>  APPLICATIONS DISABLED  <strong><strong><strong><strong><strong>**</strong></strong></strong></strong></strong></p>
-<hr>
-<p>crypto         : No usable OpenSSL found<br>ssh            : No usable OpenSSL found<br>ssl            : No usable OpenSSL found</p>
-<hr>
-</blockquote>
-<p>即表示openssl没有安装，但是自己调用openssl是ok的。。</p>
-<p>找来找去<br>最后在<a href="https://github.com/elixir-lang/elixir/issues/1748" target="_blank" rel="external">github上的一个帖子</a><br>的最后找到openssl的问题，使用如下命令：</p>
-<figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install -vd --<span class="keyword">with</span>-ssl=<span class="regexp">/usr/bin</span><span class="regexp">/openssl homebrew/versions</span><span class="regexp">/erlang-r17</span></span><br></pre></td></tr></table></figure>
-<p>中途也会卡在man和html的地方，我直接选择ignore的方式，最后居然成功了，。。。</p>
-<hr>
-<p>以上是MAC下安装经历的问题，如果是在ubuntu下面，遇到类似的bug，下面这个链接可能有所帮助<br><a href="https://sites.google.com/site/comptekkia/erlang/how-to-install-erlang-on-ubuntu-10-10" target="_blank" rel="external">How to Install Erlang on Ubuntu 10.10</a></p>
+	  <p>#Linux free 命令</p>
+<p>linux中的free命令可以查看内存使用情况，带参数<code>-m</code>表示按照Mb为单位输出，也可以带其他参数</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fruits@<span class="number">100</span>:~$ <span class="built_in">free</span> -m</span><br><span class="line">             total       used       <span class="built_in">free</span>     shared    buffers     cached</span><br><span class="line">Mem:         <span class="number">16002</span>      <span class="number">15476</span>        <span class="number">526</span>          <span class="number">0</span>        <span class="number">410</span>       <span class="number">5257</span></span><br><span class="line">-/+ buffers/cache:       <span class="number">9808</span>       <span class="number">6194</span></span><br><span class="line">Swap:        <span class="number">16336</span>      <span class="number">15005</span>       <span class="number">1331</span></span><br><span class="line">fruits@<span class="number">100</span>:~$</span><br></pre></td></tr></table></figure>
+<p>#####第二行：</p>
+<ol>
+<li>total <code>16002</code>：总内存大小，可以认为就是机器的内存条大小</li>
+<li>used <code>15476</code>：系统内核认为已使用的内存，是系统认为的占用内存，其实有些可以不算</li>
+<li>free <code>526</code>：系统内核认为的空闲内存，完全空闲</li>
+<li>shared 据说已弃用</li>
+<li>buffers/cached <code>410/5257</code>：缓存</li>
+</ol>
+<p><strong>从内核角度看内存: total = userd + free</strong></p>
+<p>#####第三行：</p>
+<ol>
+<li><strong>used <code>9808</code></strong>从应用角度看被占用的内存，可以看做是已分配的内存，等于第二行中的<strong>userd - buffers - cached</strong></li>
+<li><strong>free <code>6194</code></strong>从应用角度看空闲的内存，可以看成是还可以用到的总内存，等于第二行中得<strong>used + buffers + cached</strong></li>
+</ol>
+<p><strong>从应用角度看内存：系统占用了9808M内存，能给我的内存是6194M</strong></p>
+<p>参考：</p>
+<ol>
+<li><a href="http://itlab.idcquan.com/linux/set/935456.html" target="_blank" rel="external">http://itlab.idcquan.com/linux/set/935456.html</a></li>
+<li><a href="http://www.cnblogs.com/coldplayerest/archive/2010/02/20/1669949.html" target="_blank" rel="external">http://www.cnblogs.com/coldplayerest/archive/2010/02/20/1669949.html</a></li>
+</ol>
 	  
 	</div>
 
@@ -139,14 +140,14 @@
 	<div class="pagination">
 <ul class="pagination">
 	 
-				
-    	<li class="prev"><a href="/新建hudson项目注意事项及建议/" class="alignleft prev"><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
-  		
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+        
 
         <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
 
 		
-		   <li class="next"><a href="/Eclipse-ADT-安装/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+		   <li class="next"><a href="/新建hudson项目注意事项及建议/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
         
 	
 </ul>
@@ -161,7 +162,7 @@
   <h2 class="title">留言</h2>
 
   
-  	 <div class="ds-thread" data-thread-key="mac-homebrew-安装erlang特定版本/" data-title="mac homebrew 安装erlang特定版本" data-url="http://yoursite.com/mac-homebrew-安装erlang特定版本/"></div>  
+  	 <div class="ds-thread" data-thread-key="linux-free-command/" data-title="Linux free 命令" data-url="http://yoursite.com/linux-free-command/"></div>  
   
 </section>
 
@@ -175,33 +176,14 @@
 	
 	<div class="meta-widget">
 	<i class="fa fa-clock-o"></i>
-	2015-11-15 
+	2015-12-22 
 	</div>
 	
 
 	<!-- categories -->
     
-	<div class="meta-widget">
-	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
-    <ul id="categorys" class="tag_box list-unstyled collapse in">
-          
-  <li>
-    <li><a href="/categories/环境配置/">环境配置<span>2</span></a></li>
-  </li>
-
-    </ul>
-	</div>
-	
 
 	<!-- tags -->
-	
-	<div class="meta-widget">
-	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
-    <ul id="tags" class="tag_box list-unstyled collapse in">	  
-	    
-  <li><a href="/tags/环境配置/">环境配置<span>2</span></a></li>
-    </ul>
-	</div>
 		
 
 	<!-- toc -->

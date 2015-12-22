@@ -4,6 +4,75 @@
   
     
     <entry>
+      <title><![CDATA[Linux free 命令]]></title>
+      <url>http://yoursite.com/linux-free-command/</url>
+      <content type="html"><![CDATA[<p>#Linux free 命令</p>
+<p>linux中的free命令可以查看内存使用情况，带参数<code>-m</code>表示按照Mb为单位输出，也可以带其他参数</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fruits@<span class="number">100</span>:~$ <span class="built_in">free</span> -m</span><br><span class="line">             total       used       <span class="built_in">free</span>     shared    buffers     cached</span><br><span class="line">Mem:         <span class="number">16002</span>      <span class="number">15476</span>        <span class="number">526</span>          <span class="number">0</span>        <span class="number">410</span>       <span class="number">5257</span></span><br><span class="line">-/+ buffers/cache:       <span class="number">9808</span>       <span class="number">6194</span></span><br><span class="line">Swap:        <span class="number">16336</span>      <span class="number">15005</span>       <span class="number">1331</span></span><br><span class="line">fruits@<span class="number">100</span>:~$</span><br></pre></td></tr></table></figure>
+<p>#####第二行：</p>
+<ol>
+<li>total <code>16002</code>：总内存大小，可以认为就是机器的内存条大小</li>
+<li>used <code>15476</code>：系统内核认为已使用的内存，是系统认为的占用内存，其实有些可以不算</li>
+<li>free <code>526</code>：系统内核认为的空闲内存，完全空闲</li>
+<li>shared 据说已弃用</li>
+<li>buffers/cached <code>410/5257</code>：缓存</li>
+</ol>
+<p><strong>从内核角度看内存: total = userd + free</strong></p>
+<p>#####第三行：</p>
+<ol>
+<li><strong>used <code>9808</code></strong>从应用角度看被占用的内存，可以看做是已分配的内存，等于第二行中的<strong>userd - buffers - cached</strong></li>
+<li><strong>free <code>6194</code></strong>从应用角度看空闲的内存，可以看成是还可以用到的总内存，等于第二行中得<strong>used + buffers + cached</strong></li>
+</ol>
+<p><strong>从应用角度看内存：系统占用了9808M内存，能给我的内存是6194M</strong></p>
+<p>参考：</p>
+<ol>
+<li><a href="http://itlab.idcquan.com/linux/set/935456.html" target="_blank" rel="external">http://itlab.idcquan.com/linux/set/935456.html</a></li>
+<li><a href="http://www.cnblogs.com/coldplayerest/archive/2010/02/20/1669949.html" target="_blank" rel="external">http://www.cnblogs.com/coldplayerest/archive/2010/02/20/1669949.html</a></li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
+      <title><![CDATA[新建hudson项目注意事项及建议]]></title>
+      <url>http://yoursite.com/%E6%96%B0%E5%BB%BAhudson%E9%A1%B9%E7%9B%AE%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9%E5%8F%8A%E5%BB%BA%E8%AE%AE/</url>
+      <content type="html"><![CDATA[<p>#新建hudson项目注意事项及建议：</p>
+<hr>
+<p><strong>为了安全考虑，关闭自己新建或者配置job的权限，新建或者修改设置请发送邮件到<code>wangjunyong@doodlemobile.com</code>或者<code>xuming@doodlemobile.com</code></strong></p>
+<hr>
+<p>###注意事项：</p>
+<ol>
+<li>项目<strong>名称不允许有空格</strong></li>
+<li>新建项目时候建议配置从其他项目<strong>copy</strong>，即<code>Copy existing job</code>，然后再<strong>更改git地址</strong>和<strong>更改脚本</strong></li>
+<li><p>关于脚本选择：(git上files中所能看到的文件夹为WORKSPACE/)  </p>
+<ol>
+<li><p>如果android项目直接在WORKSPACE，使用<br><code>sample-git-14-new.sh outputApkName</code></p>
+</li>
+<li><p>如果android项目在WORKSPACE/folderName这种形式，使用<br><code>sample-git-14-new-path.sh outputApkName folderName</code></p>
+</li>
+<li><p><strong>如果android项目带有lib项目，比如googleservices，那么需要lib项目和android项目以（WORKSPACE/androidProjectName，WORKSPACE/libProjectName）形式放在git下面，使用</strong>（参考<a href="http://192.168.1.100:9090/job/pool_master/" target="_blank" rel="external">PoolMaster项目</a>）<br><code>sample-git-14-new-pathxx.sh outputApkName androidProjectName libProjectName</code></p>
+</li>
+</ol>
+</li>
+<li><p><strong>Unity自动编译配置</strong>，基本配置如上，需要注意的是设置中需要<strong>Restrict where this job can be run</strong>选中，并指定node为<code>slave－unity</code>这个节点（这是另外一个机器，是mac系统） 另外脚本选择为<code>unity-compile.sh</code>，使用格式是：(可参考<a href="http://192.168.1.100:9090/job/test_unity/" target="_blank" rel="external">test_unity项目</a>)<br><code>unity-compile.sh outputApkName androidProjectFolderName libProjectFolderName</code> </p>
+<blockquote>
+<p>unityFolderName<br>–project<br>—-androidProjectFolderName<br>—-libProjectFolderName<br>—-unityFolderName  </p>
+</blockquote>
+</li>
+<li><p>hudson签名功能：对于未签名包，然后上传到git上，签名脚本为：<code>samplesignapk.sh</code>或者<code>samplesignmultiapk.sh</code><br>具体使用格式是：<br><code>samplesignapk.sh outputFileName</code><br>需要注意是自己导出的包后缀需要为<code>*-unsigned.apk</code></p>
+</li>
+<li><p>第一次<code>build</code>可能会出错，可以不予理会，再<code>build</code>一次</p>
+</li>
+</ol>
+<hr>
+<p>###一点建议</p>
+<ol>
+<li>每次build都可以单独添加说明，这个说明与git无关</li>
+<li>每次发布之后将发布的那个build版本点一下<code>Keep this build forever</code>，并且添加说明版本号码，这样就不会因为新的提交而把之前的版本删掉（hudson默认最多保存15个build，超过的时候会把之前最早的build删除，如此往复），这样可以很方便的找到以前的版本，如<a href="http://192.168.1.100:9090/job/pool_master/" target="_blank" rel="external">PoolMaster</a></li>
+</ol>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[mac homebrew 安装erlang特定版本]]></title>
       <url>http://yoursite.com/mac-homebrew-%E5%AE%89%E8%A3%85erlang%E7%89%B9%E5%AE%9A%E7%89%88%E6%9C%AC/</url>
       <content type="html"><![CDATA[<p>当前最新版是<code>R18</code>，但最新版有些代码和现在服务器代码不太兼容，需要使用<code>R17</code></p>
