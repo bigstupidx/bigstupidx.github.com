@@ -18,7 +18,7 @@
       <url>http://yoursite.com/linux-free-command/</url>
       <content type="html"><![CDATA[<p>linux中的free命令可以查看内存使用情况，带参数<code>-m</code>表示按照Mb为单位输出，也可以带其他参数</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fruits@<span class="number">100</span>:~$ <span class="built_in">free</span> -m</span><br><span class="line">             total       used       <span class="built_in">free</span>     shared    buffers     cached</span><br><span class="line">Mem:         <span class="number">16002</span>      <span class="number">15476</span>        <span class="number">526</span>          <span class="number">0</span>        <span class="number">410</span>       <span class="number">5257</span></span><br><span class="line">-/+ buffers/cache:       <span class="number">9808</span>       <span class="number">6194</span></span><br><span class="line">Swap:        <span class="number">16336</span>      <span class="number">15005</span>       <span class="number">1331</span></span><br><span class="line">fruits@<span class="number">100</span>:~$</span><br></pre></td></tr></table></figure>
-<h5 id="第二行：">第二行：</h5><ol>
+<h3 id="第二行：">第二行：</h3><ol>
 <li>total <code>16002</code>：总内存大小，可以认为就是机器的内存条大小</li>
 <li>used <code>15476</code>：系统内核认为已使用的内存，是系统认为的占用内存，其实有些可以不算</li>
 <li>free <code>526</code>：系统内核认为的空闲内存，完全空闲</li>
@@ -26,7 +26,7 @@
 <li>buffers/cached <code>410/5257</code>：缓存</li>
 </ol>
 <p><strong>从内核角度看内存: total = userd + free</strong></p>
-<h5 id="第三行：">第三行：</h5><ol>
+<h3 id="第三行：">第三行：</h3><ol>
 <li><strong>used <code>9808</code></strong>从应用角度看被占用的内存，可以看做是已分配的内存，等于第二行中的<strong>userd - buffers - cached</strong></li>
 <li><strong>free <code>6194</code></strong>从应用角度看空闲的内存，可以看成是还可以用到的总内存，等于第二行中得<strong>used + buffers + cached</strong></li>
 </ol>
