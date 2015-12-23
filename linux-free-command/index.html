@@ -119,8 +119,8 @@
 </ol>
 <p><strong>从内核角度看内存: total = userd + free</strong></p>
 <h3 id="第三行：">第三行：</h3><ol>
-<li><strong>used <code>9808</code></strong>从应用角度看是已分配的内存（不可能再分配给我了），等于第二行中的<strong>used - buffers - cached</strong></li>
-<li><strong>free <code>6194</code></strong>从应用角度看是还可能给我的总内存，等于第二行中得<strong>free + buffers + cached</strong></li>
+<li><strong>used <code>9808</code>：</strong>从应用角度看是已分配的内存（不可能再分配给我了），等于第二行中的<strong>used - buffers - cached</strong></li>
+<li><strong>free <code>6194</code>：</strong>从应用角度看是还可能给我的总内存，等于第二行中得<strong>free + buffers + cached</strong></li>
 </ol>
 <p><strong>从应用角度看内存：系统占用了9808M内存，能给我的内存是6194M</strong></p>
 <p>参考：</p>
