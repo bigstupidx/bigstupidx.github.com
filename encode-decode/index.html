@@ -1,0 +1,259 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>关于加密解密的一些事 | BigStupidX</title>
+  <meta name="author" content="bigstupidx">
+  
+  <meta name="description" content="看到一个blog在关于我得联系方式中写得是：
+1echo YmVzdGx1b2xpd2VAZ21haWwuY29tCg== | openssl base64 -d
+看起来很高大上的样子!!!其实是利用base64的加密算法隐藏了自己的邮箱，先加密得到一个字符串终端执行如下：
+12345➜  ~  e">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="关于加密解密的一些事"/>
+  <meta property="og:site_name" content="BigStupidX"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">BigStupidX</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> 关于加密解密的一些事</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p>看到一个<a href="http://www.iroowe.com/about/" target="_blank" rel="external">blog</a>在关于我得联系方式中写得是：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> YmVzdGx1b2xpd2VAZ21haWwuY29tCg== | openssl base64 <span class="operator">-d</span></span><br></pre></td></tr></table></figure>
+<p>看起来很高大上的样子!!!<br>其实是利用base64的加密算法隐藏了自己的邮箱，先加密得到一个字符串<br>终端执行如下：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">➜  ~  <span class="keyword">echo</span> bestluoliwe@gmail.<span class="keyword">com</span> | openssl base64</span><br><span class="line">YmVzdGx1b2xpd2VAZ21haWwuY29tCg==</span><br><span class="line">➜  ~  <span class="keyword">echo</span> YmVzdGx1b2xpd2VAZ21haWwuY29tCg== | openssl base64 -<span class="keyword">d</span></span><br><span class="line">bestluoliwe@gmail.<span class="keyword">com</span></span><br><span class="line">➜  ~</span><br></pre></td></tr></table></figure>
+<p>也可以使用其他加密方式，比如<code>aes-128-cbc</code>, <code>des3</code></p>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">➜  openssl <span class="keyword">enc</span> -aes-128-cbc -<span class="keyword">in</span> a.<span class="keyword">log</span> -<span class="keyword">out</span> b.<span class="literal">log</span></span><br><span class="line">enter aes-128-cbc encryption password:</span><br><span class="line">Verifying - enter aes-128-cbc encryption password:</span><br><span class="line">➜  openssl <span class="keyword">enc</span> -<span class="keyword">d</span> -aes-128-cbc -<span class="keyword">in</span> b.<span class="keyword">log</span> -<span class="keyword">out</span> c.<span class="literal">log</span></span><br><span class="line">enter aes-128-cbc decryption password:</span><br><span class="line">➜  tail c.<span class="literal">log</span></span><br><span class="line">king</span><br><span class="line">➜  tail a.<span class="literal">log</span></span><br><span class="line">king</span><br><span class="line">➜  tail b.<span class="literal">log</span></span><br><span class="line">Salted__��!����6L0��V��<span class="keyword">L</span>/�rD%                                                                                                     ➜</span><br></pre></td></tr></table></figure>
+<p>这个地方加密出来的字符</p>
+<p>看别人blog的时候经常看到md5这个词眼，我记得md5不属于加密解密的范围，但是百度md5的时候出现了很多md5解密网站，再深究一下这些网站应该是暴力匹配的破解方法，就是讲很多密码组合的md5求出来，当用户输入md5码的时候反向查找的方法</p>
+<p>md5只是提取特征码，理论上不同文件的md5相同概率极小，所以用来做文件校验，给文件的同时给出md5码，防止被篡改，同样的还有sum、cksum、md5sum、sha1sum等等</p>
+<p>下面是来自<a href="http://blog.sina.com.cn/s/blog_702c2db50100pjn7.html" target="_blank" rel="external">夜莺的博客</a></p>
+<ol>
+<li><p>base64编码/解码<br>谈到命令行下怎样发送邮件附件，很多人想起了uuencode。也能够使用base64编码。以下是openssl base64编码/解码的使用：<br>$ openssl base64   filename.txt<br>$ openssl base64 -d   filename.bin</p>
+</li>
+<li><p>校验文档的一致性<br>UNIX下校验文档一致性的方法很多，比如sum、cksum、md5sum、sha1sum等。sum和cksum适用于简单校验的场合，生成的校验码 容易重复。md5sum有安全漏洞，当前比较推荐的是sha1sum。但是sha1sum在不同的平台用法有些不同。考虑到跨平台性，建议用 openssl。<br>$ openssl sha1 filename<br>SHA1(filename)= e83a42b9bc8431a6645099be50b6341a35d3dceb<br>$ openssl md5 filename<br>MD5(filename)= 26e9855f8ad6a5906fea121283c729c4</p>
+</li>
+<li><p>文档加密/解密<br>OpenSSL支持很多加密算法，但是一些算法只是为了保持向后兼容性，现在已不推荐使用，比如DES和RC4-40。推荐使用的加密算法是 bf(Blowfish)和-aes-128-cbc(运行在CBC模式的128位密匙AES加密算法)，加密强度有保障。<br>加密示例：<br>$ openssl enc -aes-128-cbc   filename.aes-128-cbc<br>enter aes-128-cbc encryption password:<br>Verifying - enter aes-128-cbc encryption password:<br>解密示例：<br>$ openssl enc -d -aes-128-cbc -in filename.aes-128-cbc &gt; filename<br>enter aes-128-cbc decryption password:</p>
+</li>
+<li><p>口令生成和传递<br>openssl能够生成随机性很强的口令。<br>$ openssl rand 15 -base64<br>s69mj+8ToN2p3Z1KESBG<br>以上命令需要openssl生成15个字节序列，然后用base64编码，结果产生20个字符。<br>在日常生活中，经常可看到这样的情况：系统管理员配置初始密码给用户，然后让用户登录去修改新密码，这给安全带来了隐患。较好的做法是用户生成口令加密后 的结果发给管理员，让管理员配置到系统中。<br>比如对于以上生成的口令，UNIX口令加密方法如下：<br>$ openssl passwd -1 s69mj+8ToN2p3Z1KESBG<br>$1$Rp/btEwK$qhUGFlsIpDtNT1I9MD/Gg1<br>管理员收集每个用户交给他的加密后的串，写到一个文档中，比如文档名为newpassword：<br>user_a:$1$Rp/btEwK$qhUGFlsIpDtNT1I9MD/Gg1<br>user_b:$1$zmUy5lry$aG45DkcaJwM/GNlpBLTDy0<br>…<br>一个用户一行，用户名和密码之间用冒号分隔。<br>系统管理员运行如下命令导入用户密码：<br>$ chpasswd –encrypted<br>对于老UNIX系统，生成口令密码无需参数-1，比如：<br>$ openssl passwd s69mj+8ToN2p3Z1KESBG<br>Warning: truncating password to 8 characters<br>FS4lGulQ915WU<br>假如passwd命令后没有接口令，openssl会提示输入一个：<br>$ openssl passwd -1<br>Password:<br>Verifying - Password:<br>$1$jACBc0.C$KR5DcpttXQoKfDiapyvav0</p>
+</li>
+</ol>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+        
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/C-Meanings/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  
+  	 <div class="ds-thread" data-thread-key="encode-decode/" data-title="关于加密解密的一些事" data-url="http://yoursite.com/encode-decode/"></div>  
+  
+</section>
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2015-12-24 
+	</div>
+	
+
+	<!-- categories -->
+    
+
+	<!-- tags -->
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'runnerloft' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2015 bigstupidx
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+   <script type="text/javascript">      
+     var search_path = "search.xml";
+	 if (search_path.length == 0) {
+	 	search_path = "search.xml";
+	 }
+	 var path = "/" + search_path;
+     searchFunc(path, 'local-search-input', 'local-search-result');
+   </script>
+
+</body>
+   </html>
