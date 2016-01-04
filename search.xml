@@ -4,6 +4,36 @@
   
     
     <entry>
+      <title><![CDATA[rebar搭建erlang项目]]></title>
+      <url>http://yoursite.com/rebar-erlang/</url>
+      <content type="html"><![CDATA[<p>rebar在github上源码：<a href="https://github.com/basho/rebar" target="_blank" rel="external">https://github.com/basho/rebar</a><br>wiki界面是：<a href="https://github.com/rebar/rebar/wiki" target="_blank" rel="external">https://github.com/rebar/rebar/wiki</a></p>
+<h4 id="源码编译">源码编译</h4><p>在其<a href="https://github.com/basho/rebar/blob/develop/README.md" target="_blank" rel="external">README.md</a>中已经写好了</p>
+<blockquote>
+<p><strong>Downloading</strong></p>
+<p>You can download a pre-built binary version of rebar from:</p>
+<p><a href="https://github.com/rebar/rebar/wiki/rebar" target="_blank" rel="external">https://github.com/rebar/rebar/wiki/rebar</a></p>
+<p><strong>Building rebar</strong></p>
+<p>$ git clone git://github.com/rebar/rebar.git<br>$ cd rebar<br>$ ./bootstrap<br>Recompile: src/getopt<br>…<br>Recompile: src/rebar_utils<br>==&gt; rebar (compile)<br>Congratulations! You now have a self-contained script called “rebar” in<br>your current working directory. Place this script anywhere in your path<br>and you can use rebar to build OTP-compliant apps.</p>
+</blockquote>
+<p>编译完成之后会生成一个叫<code>rebar</code>的没有任何后缀的文件，可以将这个文件作为常用命令放到<code>/usr/bin/</code>下面</p>
+<p>利用rebar创建并运行erlang项目的文档在此：<a href="https://github.com/rebar/rebar/wiki/Release-handling" target="_blank" rel="external">https://github.com/rebar/rebar/wiki/Release-handling</a></p>
+<p>其中用到的rebar的常用命令解释如下：</p>
+<ol>
+<li><code>rebar -V</code> 查看当前rebar的版本</li>
+<li><code>rebar create-app appid=XXX</code> 生成名为XXX的app，会在同级目录下生成src文件夹</li>
+<li><code>rebar get-deps</code> 会根据rebar.config中得deps下载获取deps，这个类似于maven的dom文件</li>
+<li><code>rebar compile</code> 编译</li>
+<li><code>rebar create-node nodeid=XXX</code> 创建节点</li>
+<li><code>rebar generate</code> 生成</li>
+</ol>
+<p><code>rel/files/vm.args</code>中的一些配置：</p>
+<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="preprocessor">## Name of the node，节点名字，运行node()函数显示的是这个</span></span><br><span class="line">-name xx@<span class="number">192.168</span><span class="number">.0</span><span class="number">.79</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">## Cookie for distributed erlang，这个比较重要</span></span><br><span class="line">-setcookie poolmaster</span><br><span class="line"></span><br><span class="line"><span class="preprocessor">## Heartbeat management; auto-restarts VM if it dies or becomes unresponsive</span></span><br><span class="line"><span class="preprocessor">## (Disabled by default..use with caution!)</span></span><br><span class="line"><span class="preprocessor">##-heart</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">## Enable kernel poll and a few async threads</span></span><br><span class="line"><span class="preprocessor">## epoll是否启用，线上服务器最好启用</span></span><br><span class="line">+K <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="preprocessor">## Increase number of concurrent ports/sockets</span></span><br><span class="line"><span class="preprocessor">## 更改最大线程数，线上服务器最好做一下更改</span></span><br><span class="line">-env<span class="constant"> ERL_MAX_PORTS </span><span class="number">999999</span></span><br><span class="line">+P <span class="number">1000000</span></span><br><span class="line"><span class="preprocessor">## 启用多核，线上服务器最好启用</span></span><br><span class="line">-smp enable</span><br><span class="line">+A <span class="number">4</span></span><br><span class="line">-kernel inet_dist_listen_min <span class="number">9000</span></span><br><span class="line">-kernel inet_dist_listen_max <span class="number">9999</span></span><br></pre></td></tr></table></figure>
+<p><code>rel/XXX/bin/XXX start</code>和<code>rel/XXX/bin/XXX console</code> 都是启动这个XXX节点，不能同时使用，有个同事使用start之后再使用console出错，<code>Protocol: ~tp: the name myapp@192.168.2.140 seems to be in use by another Erlang node&quot;,[&quot;inet_tcp&quot;]}</code> 问我是不是代码写错了。我一般是使用<code>XXX start</code>之后，使用<code>XXX remote_console</code>来连上XXX节点，因为线上服务器使用attach会看到很多很多log，而remote_console是一个干净的环境（看不到log）</p>
+<p>vm的设置参考：<br><a href="http://itindex.net/detail/43819-%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%AC%94%E8%AE%B0-erlang" target="_blank" rel="external">100万并发连接服务器笔记之Erlang完成1M并发连接目标</a></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[关于erlang尾递归]]></title>
       <url>http://yoursite.com/erlang-call-last/</url>
       <content type="html"><![CDATA[<p>在查找erlang性能优化方面文章的时候看到这篇文章<a href="http://erlangdisplay.iteye.com/blog/1214167" target="_blank" rel="external">Erlang服务器内存耗尽bug跟踪过程</a>，提到尾递归，作者在最后给出了验证程序，我稍作调整如下：</p>
