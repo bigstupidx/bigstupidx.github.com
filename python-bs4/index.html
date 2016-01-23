@@ -1,0 +1,269 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>【已解决】python多版本引发的 No moudle named xxx 问题 | DogLike</title>
+  <meta name="author" content="bigstupidx">
+  
+  <meta name="description" content="今天在sublime text2运行一个python脚本的时候出现了no module named bs4，bs4是python中beautifulsoup库的简写，按照bs4的安装命令
+1sudo pip install beautifulsoup4
+安装之后发现sublime下依然无法正确运行，">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="【已解决】python多版本引发的 No moudle named xxx 问题"/>
+  <meta property="og:site_name" content="DogLike"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">DogLike</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> 【已解决】python多版本引发的 No moudle named xxx 问题</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p>今天在sublime text2运行一个python脚本的时候出现了<strong><code>no module named bs4</code></strong>，bs4是python中beautifulsoup库的简写，按照bs4的安装命令</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip <span class="keyword">install</span> beautifulsoup4</span><br></pre></td></tr></table></figure>
+<p>安装之后发现sublime下依然无法正确运行，<br>在iTerm终端的直接执行的python命令行中却可以<code>import bs4</code>的，推想可能安装了多个python版本<br>验证如下：</p>
+<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">➜  aws  python</span><br><span class="line"><span class="constant">Python</span> <span class="number">2.7</span>.<span class="number">11</span> (default, <span class="constant">Dec</span>  <span class="number">5</span> <span class="number">2015</span>, <span class="number">14</span><span class="symbol">:</span><span class="number">44</span><span class="symbol">:</span><span class="number">53</span>)</span><br><span class="line">[<span class="constant">GCC</span> <span class="number">4.2</span>.<span class="number">1</span> <span class="constant">Compatible</span> <span class="constant">Apple</span> <span class="constant">LLVM</span> <span class="number">7.0</span>.<span class="number">0</span> (clang-<span class="number">700.1</span>.<span class="number">76</span>)] on darwin</span><br><span class="line"><span class="constant">Type</span> <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> <span class="keyword">or</span> <span class="string">"license"</span> <span class="keyword">for</span> more information.</span><br><span class="line"><span class="prompt">&gt;&gt;</span>&gt; import bs4</span><br><span class="line"><span class="prompt">&gt;&gt;</span>&gt; quit()</span><br><span class="line">➜  aws  ./spiderx.py</span><br><span class="line"><span class="constant">Traceback</span> (most recent call last)<span class="symbol">:</span></span><br><span class="line">  <span class="constant">File</span> <span class="string">"./spiderx.py"</span>, line <span class="number">5</span>, <span class="keyword">in</span> &lt;<span class="class"><span class="keyword">module</span>&gt;</span></span><br><span class="line">    from bs4 import <span class="constant">BeautifulSoup</span></span><br><span class="line"><span class="constant">ImportError</span><span class="symbol">:</span> <span class="constant">No</span> <span class="class"><span class="keyword">module</span> <span class="title">named</span> <span class="title">bs4</span></span></span><br><span class="line">➜  aws  whereis python</span><br><span class="line">/usr/bin/python</span><br><span class="line">➜  aws  python</span><br><span class="line"><span class="constant">Python</span> <span class="number">2.7</span>.<span class="number">11</span> (default, <span class="constant">Dec</span>  <span class="number">5</span> <span class="number">2015</span>, <span class="number">14</span><span class="symbol">:</span><span class="number">44</span><span class="symbol">:</span><span class="number">53</span>)</span><br><span class="line">[<span class="constant">GCC</span> <span class="number">4.2</span>.<span class="number">1</span> <span class="constant">Compatible</span> <span class="constant">Apple</span> <span class="constant">LLVM</span> <span class="number">7.0</span>.<span class="number">0</span> (clang-<span class="number">700.1</span>.<span class="number">76</span>)] on darwin</span><br><span class="line"><span class="constant">Type</span> <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> <span class="keyword">or</span> <span class="string">"license"</span> <span class="keyword">for</span> more information.</span><br><span class="line"><span class="prompt">&gt;&gt;</span>&gt; quit()</span><br><span class="line">➜  aws  /usr/bin/python</span><br><span class="line"><span class="constant">Python</span> <span class="number">2.7</span>.<span class="number">10</span> (default, <span class="constant">Oct</span> <span class="number">23</span> <span class="number">2015</span>, <span class="number">18</span><span class="symbol">:</span><span class="number">05</span><span class="symbol">:</span><span class="number">06</span>)</span><br><span class="line">[<span class="constant">GCC</span> <span class="number">4.2</span>.<span class="number">1</span> <span class="constant">Compatible</span> <span class="constant">Apple</span> <span class="constant">LLVM</span> <span class="number">7.0</span>.<span class="number">0</span> (clang-<span class="number">700.0</span>.<span class="number">59.5</span>)] on darwin</span><br><span class="line"><span class="constant">Type</span> <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> <span class="keyword">or</span> <span class="string">"license"</span> <span class="keyword">for</span> more information.</span><br><span class="line"><span class="prompt">&gt;&gt;</span>&gt; import bs4</span><br><span class="line"><span class="constant">Traceback</span> (most recent call last)<span class="symbol">:</span></span><br><span class="line">  <span class="constant">File</span> <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;<span class="class"><span class="keyword">module</span>&gt;</span></span><br><span class="line"><span class="constant">ImportError</span><span class="symbol">:</span> <span class="constant">No</span> <span class="class"><span class="keyword">module</span> <span class="title">named</span> <span class="title">bs4</span></span></span><br><span class="line"><span class="prompt">&gt;&gt;</span>&gt;</span><br></pre></td></tr></table></figure>
+<p>发现确实安装了两个版本的python，一个是2.7.10，一个是2.7.11，有一个应该是自带的，另外一个应该是通过brew安装的，在usr/local/bin/下面，而sublime中使用的应该是/usr/bin/python，因为在py文件的开头有</p>
+<figure class="highlight d"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="shebang">#!/usr/bin/python</span></span><br><span class="line">#-*- coding: UTF-<span class="number">8</span> -*-</span><br></pre></td></tr></table></figure>
+<p>解决方法，删掉brew安装的版本(删除自带的版本貌似比较麻烦，而且都是2.7就没有必要了)<br><code>brew uninstall python</code><br>再运行python的时候进入的是2.7.10，表示2.7.11已经删除</p>
+<p>如此可以再安装bs4，使用如下命令：<br><code>sudo pip install beautifulsoup4</code><br>提示pip command not found，汗。。</p>
+<p>使用<code>brew install pip</code>命令，达到如下结果</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">➜  ~  brew <span class="operator"><span class="keyword">install</span> pip</span><br><span class="line"><span class="keyword">Error</span>: <span class="keyword">No</span> available formula <span class="keyword">with</span> the <span class="keyword">name</span> <span class="string">"pip"</span></span><br><span class="line">Homebrew provides pip via: <span class="string">`brew install python`</span>. However you will <span class="keyword">then</span></span><br><span class="line">have two Pythons installed <span class="keyword">on</span> your Mac, so alternatively you can <span class="keyword">install</span></span><br><span class="line">pip via the instructions <span class="keyword">at</span>:</span><br><span class="line"></span><br><span class="line">  https://pip.readthedocs.org/en/stable/installing/#<span class="keyword">install</span>-pip</span><br><span class="line">➜  ~</span></span><br></pre></td></tr></table></figure>
+<p>直接进入那个地址看看，<a href="https://pip.readthedocs.org/en/stable/installing/#install-pip" target="_blank" rel="external">https://pip.readthedocs.org/en/stable/installing/#install-pip</a></p>
+<p>按照步骤安装pip即可<br>中间遇到了权限问题，加上sudo就可以了</p>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+        
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/rebar-erlang/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  
+  	 <div class="ds-thread" data-thread-key="python-bs4/" data-title="【已解决】python多版本引发的 No moudle named xxx 问题" data-url="http://yoursite.com/python-bs4/"></div>  
+  
+</section>
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2016-01-23 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/bug/">bug<span>1</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/bs4/">bs4<span>1</span></a></li> <li><a href="/tags/python/">python<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'runnerloft' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2016 bigstupidx
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+   <script type="text/javascript">      
+     var search_path = "search.xml";
+	 if (search_path.length == 0) {
+	 	search_path = "search.xml";
+	 }
+	 var path = "/" + search_path;
+     searchFunc(path, 'local-search-input', 'local-search-result');
+   </script>
+
+</body>
+   </html>
