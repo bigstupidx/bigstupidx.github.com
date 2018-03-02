@@ -13,7 +13,7 @@
   <meta property="og:site_name" content="DogLike"/>
 
   
-    <meta property="og:image" content="undefined"/>
+    <meta property="og:image" content=""/>
   
 
   
@@ -107,6 +107,38 @@
 	<!-- display as entry -->	
 		<h3 class="title">
 			<div class="date"> 2015-11-10 </div>
+			<div class="article-title"><a href="/Mac-Android-ADB环境变量设置/" >Mac Android ADB环境变量设置</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<ol>
+<li>启动Terminal终端工具</li>
+<li>输入cd ~/ 进入当前用户的home目录</li>
+<li>vim .bash_profile</li>
+<li><p>在文件尾部加入以下内容：</p>
+<pre><code>export PATH=${PATH}:/android_sdk/tools:/android_sdk/platform-tools
+</code></pre></li>
+<li><p>终端执行 <code>source .bash_profile</code> </p>
+</li>
+<li>验证：输入adb回车。如果未显示command not found，说明此命令有效，环境便亮设置完成。</li>
+</ol>
+
+	
+	</div>
+  <a type="button" href="/Mac-Android-ADB环境变量设置/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
+			<div class="date"> 2015-11-10 </div>
 			<div class="article-title"><a href="/Android-SDK-Manager-代理设置/" >Android SDK Manager 代理设置</a></div>						
 		</h3>
 	
@@ -153,7 +185,7 @@
 </ol>
 <p>不会就学一下！</p>
 <p>Manacher算法思想还是很简单的，假设一个串是回文串，那么从必然左右对称，那么如果求出了对称中左半部分是个回文串，那么右边部分的最小可能值就出来了</p>
-<p>具体看这个，有图还是容易理解一些：<br><a href="http://www.felix021.com/blog/read.php?2040" target="_blank" rel="external">http://www.felix021.com/blog/read.php?2040</a><br>或者这个：<br><a href="http://blog.sina.com.cn/s/blog_70811e1a01014esn.html" target="_blank" rel="external">http://blog.sina.com.cn/s/blog_70811e1a01014esn.html</a></p>
+<p>具体看这个，有图还是容易理解一些：<br><a href="http://www.felix021.com/blog/read.php?2040" target="_blank" rel="noopener">http://www.felix021.com/blog/read.php?2040</a><br>或者这个：<br><a href="http://blog.sina.com.cn/s/blog_70811e1a01014esn.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_70811e1a01014esn.html</a></p>
 <p>本题AC代码：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> _CRT_SECURE_NO_WARNINGS</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> MAXN 2000010</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">char</span> str[MAXN], tmp[MAXN];<span class="comment">//1000000*2+10</span></span><br><span class="line"><span class="keyword">int</span> p[MAXN];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">solve</span><span class="params">(<span class="keyword">char</span> str[], <span class="keyword">int</span> p[])</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> len = <span class="built_in">strlen</span>(str);</span><br><span class="line">    <span class="built_in">memset</span>(p, <span class="number">0</span>, <span class="keyword">sizeof</span>(p));</span><br><span class="line">    <span class="keyword">int</span> id = <span class="number">0</span>, mx = <span class="number">0</span>;</span><br><span class="line"><span class="comment">//    p[0] = 1;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; len; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (mx &lt;= i)</span><br><span class="line">            p[i] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            p[i] = min(mx - i, p[<span class="number">2</span> * id - i]);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> (i - p[i] &gt;= <span class="number">0</span> &amp;&amp; i + p[i] &lt; len &amp;&amp; str[i - p[i]] == str[i + p[i]])</span><br><span class="line">            p[i]++;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (i + p[i] &gt; mx) &#123;</span><br><span class="line">            mx = p[i] + i;</span><br><span class="line">            id = i;</span><br><span class="line">        &#125;</span><br><span class="line">        ans = max(ans, p[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans - <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> nca = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">while</span> (<span class="built_in">scanf</span>(<span class="string">"%s"</span>, tmp) != EOF) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">strcmp</span>(tmp, <span class="string">"END"</span>) == <span class="number">0</span>)<span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">int</span> len = <span class="built_in">strlen</span>(tmp), k = <span class="number">2</span>;</span><br><span class="line">        str[<span class="number">0</span>] = <span class="string">'?'</span>;</span><br><span class="line">        str[<span class="number">1</span>] = <span class="string">'#'</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; len; i++) &#123;</span><br><span class="line">            str[k++] = tmp[i];</span><br><span class="line">            str[k++] = <span class="string">'#'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        str[k] = <span class="string">'\0'</span>;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Case %d: %d\n"</span>, nca++, solve(str, p));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>其实算法核心只有不到10行，赞！</p>
 
@@ -228,10 +260,10 @@
 	
 		<p>2015/09/26 衡水全程马拉松</p>
 <p>我是用别人的名额跑的，我们一行4男4女，有老乡ddp，和他在豆瓣认识的一些志同道合的跑马的好友，我和另外两个男生是全程，其他是半程，虽然不是很熟，但是兴趣相同，聊得很开，他们基本都是已经跑过全程的人了，而我是第一次，按照平时跑步的节奏，我给自己定的目标是430</p>
-<p>09/25<br>下午到马拉松广场旁边的[泰华商务酒店]<a href="http://map.baidu.com/detail?qt=ninf&amp;uid=d5ce584e330046bfbe4842a9&amp;wd=%E9%A9%AC%E6%8B%89%E6%9D%BE%E5%B9%BF%E5%9C%BA&amp;b=(12874299.345,4501198.75;12874816.345,4501599.25)&amp;query=&amp;qid=&amp;page_num=&amp;detail=hotel&amp;from=map，" target="_blank" rel="external">http://map.baidu.com/detail?qt=ninf&amp;uid=d5ce584e330046bfbe4842a9&amp;wd=%E9%A9%AC%E6%8B%89%E6%9D%BE%E5%B9%BF%E5%9C%BA&amp;b=(12874299.345,4501198.75;12874816.345,4501599.25)&amp;query=&amp;qid=&amp;page_num=&amp;detail=hotel&amp;from=map，</a><br>环境还不错</p>
+<p>09/25<br>下午到马拉松广场旁边的[泰华商务酒店]<a href="http://map.baidu.com/detail?qt=ninf&amp;uid=d5ce584e330046bfbe4842a9&amp;wd=%E9%A9%AC%E6%8B%89%E6%9D%BE%E5%B9%BF%E5%9C%BA&amp;b=(12874299.345,4501198.75;12874816.345,4501599.25)&amp;query=&amp;qid=&amp;page_num=&amp;detail=hotel&amp;from=map，" target="_blank" rel="noopener">http://map.baidu.com/detail?qt=ninf&amp;uid=d5ce584e330046bfbe4842a9&amp;wd=%E9%A9%AC%E6%8B%89%E6%9D%BE%E5%B9%BF%E5%9C%BA&amp;b=(12874299.345,4501198.75;12874816.345,4501599.25)&amp;query=&amp;qid=&amp;page_num=&amp;detail=hotel&amp;from=map，</a><br>环境还不错</p>
 <p>晚饭在旁边的农家乐吃的“水煮活鱼”<img src="http://7xocq1.com1.z0.glb.clouddn.com/thumb_IMG_2789_1024.jpg" alt="">，有点咸，味道也一般，晚上看看电视睡觉</p>
 <p>09/26<br>6:00起床吃饭了，吃的包子啥的，没什么感觉，完事之后就回屋收拾东西，6:30在酒店楼下集合，然后走到马拉松广场走，差不多7点左右走到，那边已经很多人了<img src="http://7xocq1.com1.z0.glb.clouddn.com/thumb_IMG_2793_1024.jpg" alt="">据说这次总人数有2w左右，我们插了个队，离起点很近</p>
-<h2 id="7点半发枪起跑">7点半发枪起跑</h2><p><strong>0KM-10KM</strong><br>和ddp还有几个跑半马的一起跑的，感觉没什么难度，10公里处半马折返往回跑，后面我就一个人了，另外两个跑全马的早跑前面去了<br><strong>“这样跑下去，430一点问题都没有啊”</strong></p>
+<h2 id="7点半发枪起跑"><a href="#7点半发枪起跑" class="headerlink" title="7点半发枪起跑"></a>7点半发枪起跑</h2><p><strong>0KM-10KM</strong><br>和ddp还有几个跑半马的一起跑的，感觉没什么难度，10公里处半马折返往回跑，后面我就一个人了，另外两个跑全马的早跑前面去了<br><strong>“这样跑下去，430一点问题都没有啊”</strong></p>
 <p><strong>11KM-15KM</strong><br>虽然没有认识的了，但是路人非常热情，各种鼓劲，每次经过人群，感觉就像打了激素，要快上那么一会儿<br><strong>“感觉应该没问题，坚持就是胜利”</strong></p>
 <p><strong>15KM-20KM</strong><br>开始有点累的感觉了，可能经过的长距离训练还是少了，这个点差不多是我平时长跑的终点了，但我还在坚持，太阳那个晒啊，学习其他跑友，整了块有水的海绵放在脖子上，速度开始慢下来了<br><strong>“按现在的速度，430应该没问题的，加油”</strong></p>
 <p><strong>20KM-25KM</strong><br>后面超越我的人越来越多了，我给自己打气，慢慢跑，每公里跑进7分钟就可以，就开始跑800m，走200m（喝水的地方）的节奏吧，430应该没问题，后面还可以发发力<br><strong>“有点累了，要是和他们跑半马，现在应该都到终点了，傻逼了”</strong></p>
@@ -299,7 +331,7 @@
 		<h4>分类</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/categories/DoodleMobile/">DoodleMobile<span>0</span></a></li>
+			<li><a href="/categories/DOODLE/">DOODLE<span>1</span></a></li>
 		
 			<li><a href="/categories/Mac/">Mac<span>1</span></a></li>
 		
@@ -326,48 +358,44 @@
 		<h4>标签云</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
+			<li><a href="/tags/Homebrew/">Homebrew<span>1</span></a></li>
+		
 			<li><a href="/tags/Mac/">Mac<span>1</span></a></li>
-		
-			<li><a href="/tags/ACM/">ACM<span>2</span></a></li>
-		
-			<li><a href="/tags/linux/">linux<span>1</span></a></li>
-		
-			<li><a href="/tags/跑步/">跑步<span>1</span></a></li>
-		
-			<li><a href="/tags/DoodleMobile/">DoodleMobile<span>0</span></a></li>
-		
-			<li><a href="/tags/c/">c++<span>1</span></a></li>
-		
-			<li><a href="/tags/Android/">Android<span>2</span></a></li>
-		
-			<li><a href="/tags/环境配置/">环境配置<span>2</span></a></li>
-		
-			<li><a href="/tags/git/">git<span>1</span></a></li>
-		
-			<li><a href="/tags/erlang/">erlang<span>2</span></a></li>
-		
-			<li><a href="/tags/回文串/">回文串<span>1</span></a></li>
-		
-			<li><a href="/tags/python/">python<span>1</span></a></li>
-		
-			<li><a href="/tags/gradle/">gradle<span>0</span></a></li>
-		
-			<li><a href="/tags/bs4/">bs4<span>1</span></a></li>
-		
-			<li><a href="/tags/Manacher/">Manacher<span>1</span></a></li>
 		
 			<li><a href="/tags/后缀数组/">后缀数组<span>1</span></a></li>
 		
-			<li><a href="/tags/POJ/">POJ<span>2</span></a></li>
+			<li><a href="/tags/DOODLE/">DOODLE<span>1</span></a></li>
 		
 			<li><a href="/tags/字符串/">字符串<span>1</span></a></li>
 		
-			<li><a href="/tags/unity-ads/">unity-ads<span>0</span></a></li>
+			<li><a href="/tags/POJ/">POJ<span>2</span></a></li>
 		
-			<li><a href="/tags/Homebrew/">Homebrew<span>1</span></a></li>
+			<li><a href="/tags/git/">git<span>1</span></a></li>
 		
+			<li><a href="/tags/跑步/">跑步<span>1</span></a></li>
 		
-		   <li><a href="/tags">...<span>21</span></a></li>
+			<li><a href="/tags/Android/">Android<span>2</span></a></li>
+		
+			<li><a href="/tags/回文串/">回文串<span>1</span></a></li>
+		
+			<li><a href="/tags/ACM/">ACM<span>2</span></a></li>
+		
+			<li><a href="/tags/python/">python<span>1</span></a></li>
+		
+			<li><a href="/tags/erlang/">erlang<span>2</span></a></li>
+		
+			<li><a href="/tags/bs4/">bs4<span>1</span></a></li>
+		
+			<li><a href="/tags/c/">c++<span>1</span></a></li>
+		
+			<li><a href="/tags/环境配置/">环境配置<span>2</span></a></li>
+		
+			<li><a href="/tags/bug/">bug<span>1</span></a></li>
+		
+			<li><a href="/tags/linux/">linux<span>1</span></a></li>
+		
+			<li><a href="/tags/Manacher/">Manacher<span>1</span></a></li>
+		
 		 
 		</ul>
 	</div>
@@ -378,6 +406,10 @@
 <div class="widget">
   <h4>最新文章</h4>
   <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/unityads添加/" ><i class="fa fa-file-o"></i>android工程添加unityads</a>
+      </li>
     
       <li>
         <a href="/homebrew-update-bug/" ><i class="fa fa-file-o"></i>Homebrew 更新Bug</a>
@@ -393,10 +425,6 @@
     
       <li>
         <a href="/erlang-call-last/" ><i class="fa fa-file-o"></i>关于erlang尾递归</a>
-      </li>
-    
-      <li>
-        <a href="/encode-decode/" ><i class="fa fa-file-o"></i>关于加密解密的一些事</a>
       </li>
     
   </ul>
@@ -429,7 +457,7 @@
   </div>
   <div class="container-narrow">
   <footer> <p>
-  &copy; 2016 bigstupidx
+  &copy; 2018 bigstupidx
   
       with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
 </p> </footer>
@@ -458,15 +486,6 @@
 </script>
 
 
-
-   <script type="text/javascript">      
-     var search_path = "search.xml";
-	 if (search_path.length == 0) {
-	 	search_path = "search.xml";
-	 }
-	 var path = "/" + search_path;
-     searchFunc(path, 'local-search-input', 'local-search-result');
-   </script>
 
 </body>
    </html>

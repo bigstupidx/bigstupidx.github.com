@@ -1,0 +1,276 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>android工程添加unityads | DogLike</title>
+  <meta name="author" content="bigstupidx">
+  
+  <meta name="description" content="unityads的官方文档：https://unityads.unity3d.com/help/index
+unityads的官方github：https://github.com/Unity-Technologies/unity-ads-android
+1、unityads.jar下载
+
+从其gi">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="android工程添加unityads"/>
+  <meta property="og:site_name" content="DogLike"/>
+
+  
+    <meta property="og:image" content=""/>
+  
+
+  
+  
+    <link href="/favicon.png" rel="icon">
+  
+  
+  <link rel="stylesheet" href="/css/bootstrap.min.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/font-awesome.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/responsive.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/highlight.css" media="screen" type="text/css">
+  <link rel="stylesheet" href="/css/google-fonts.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+
+  <script src="/js/jquery-2.0.3.min.js"></script>
+
+  <!-- analytics -->
+  
+
+
+
+</head>
+
+ <body>  
+  <nav id="main-nav" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <button type="button" class="navbar-header navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+		<span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+	  <a class="navbar-brand" href="/">DogLike</a>
+      <div class="collapse navbar-collapse nav-menu">
+		<ul class="nav navbar-nav">
+		  
+		  <li>
+			<a href="/archives" title="All the articles.">
+			  <i class="fa fa-archive"></i>Archives
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/categories" title="All the categories.">
+			  <i class="fa fa-folder"></i>Categories
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/tags" title="All the tags.">
+			  <i class="fa fa-tags"></i>Tags
+			</a>
+		  </li>
+		  
+		  <li>
+			<a href="/about" title="About me.">
+			  <i class="fa fa-user"></i>About
+			</a>
+		  </li>
+		  
+		</ul>
+      </div>
+    </div> <!-- container -->
+</nav>
+<div class="clearfix"></div>
+
+  <div class="container">
+  	<div class="content">
+    	 
+
+
+	
+		<div class="page-header">		
+			<h1> android工程添加unityads</h1>
+		</div>		
+	
+
+
+
+<div class="row post">
+	<!-- cols -->
+	
+	<div id="top_meta"></div>
+	<div class="col-md-9">
+	
+
+	<!-- content -->
+	<div class="mypage">		
+	  		
+
+	  <p>unityads的官方文档：<br><a href="https://unityads.unity3d.com/help/index" target="_blank" rel="noopener">https://unityads.unity3d.com/help/index</a></p>
+<p>unityads的官方github：<br><a href="https://github.com/Unity-Technologies/unity-ads-android" target="_blank" rel="noopener">https://github.com/Unity-Technologies/unity-ads-android</a></p>
+<p>1、unityads.jar下载</p>
+<ul>
+<li>从其github的<a href="https://github.com/Unity-Technologies/unity-ads-android/releases" target="_blank" rel="noopener">release</a>中下载unity-ads.zip，解压之后里面应该有unity-ads.jar</li>
+<li>百度网盘：链接:<a href="https://pan.baidu.com/s/1dAbx3S" target="_blank" rel="noopener">https://pan.baidu.com/s/1dAbx3S</a>  密码:d3dm</li>
+</ul>
+<p>2、将unityads.jar添加到android工程的libs下面</p>
+<p>3、启动Activity的MainAcivity.java 中 添加</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> <span class="title">implements</span> <span class="title">IUnityAdsListener</span></span>&#123;</span><br><span class="line">	...</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4、实现IUnityAdsListener接口</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onUnityAdsReady</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">      Log.w(<span class="string">"tag"</span>, <span class="string">"UnityAds onUnityAdsReady"</span> + s);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onUnityAdsStart</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">      Log.w(<span class="string">"tag"</span>, <span class="string">"onUnityAdsStart"</span> + s);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onUnityAdsFinish</span><span class="params">(String s, UnityAds.FinishState finishState)</span> </span>&#123;</span><br><span class="line">      Log.w(<span class="string">"tag"</span>, <span class="string">"UnityAds onUnityAdsFinish callback"</span>);</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line"><span class="comment">//此处为播放结束的回调方法，若不是unity项目，请调用自己的回调方法.</span></span><br><span class="line">          UnityPlayer.UnitySendMessage(<span class="string">"_Platform"</span>, <span class="string">"UnityAdsCallBack"</span>, s);</span><br><span class="line">      &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">          e.printStackTrace();</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onUnityAdsError</span><span class="params">(UnityAds.UnityAdsError unityAdsError, String s)</span> </span>&#123;</span><br><span class="line">      Log.w(<span class="string">"tag"</span>, <span class="string">"onUnityAdsError"</span> + unityAdsError + s);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>5、onCreate函数的最后添加</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">         API_LEVEL = Build.VERSION.SDK_INT;</span><br><span class="line">   &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">         e.printStackTrace();</span><br><span class="line">   &#125;</span><br><span class="line">Log.w(<span class="string">"tag"</span>, <span class="string">"==== UnityAds onCreate initialize111: "</span> + API_LEVEL);</span><br><span class="line"><span class="keyword">if</span> (API_LEVEL &gt;= <span class="number">9</span>) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        UnityAds.initialize(<span class="keyword">this</span>, <span class="string">"idReplace"</span>, <span class="keyword">this</span>);</span><br><span class="line">        UnityAds.setListener(<span class="keyword">this</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>6、添加两个从unity中调用的方法：</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">ShowRewardVideoUnityAds</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Log.w(<span class="string">"tag"</span>, <span class="string">"show UnityAds video unity ads!"</span>);</span><br><span class="line">    MainActivity.<span class="keyword">this</span>.runOnUiThread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (UnityAds.isReady()) &#123;</span><br><span class="line">                    UnityAds.show(MainActivity.<span class="keyword">this</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">IsUnityAdsReady</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (API_LEVEL &lt; <span class="number">9</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="function"><span class="keyword">return</span> UnityAds.<span class="title">isReady</span><span class="params">()</span></span>;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>AndroidManifest.xml中添加：</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- unity ads --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">activity</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:name</span>=<span class="string">"com.unity3d.ads.adunit.AdUnitActivity"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:configChanges</span>=<span class="string">"fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:hardwareAccelerated</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:theme</span>=<span class="string">"@android:style/Theme.NoTitleBar.Fullscreen"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">activity</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:name</span>=<span class="string">"com.unity3d.ads.adunit.AdUnitSoftwareActivity"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:configChanges</span>=<span class="string">"fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:hardwareAccelerated</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:theme</span>=<span class="string">"@android:style/Theme.NoTitleBar.Fullscreen"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="unityads调用的基本流程"><a href="#unityads调用的基本流程" class="headerlink" title="unityads调用的基本流程"></a>unityads调用的基本流程</h5><ol>
+<li>onCreate中初始化unityads，并且设置好unityads的回调监听IUnityAdsListener为MainActivity自己</li>
+<li>显示视屏广告按钮的时候调用IsUnityAdsReady判断unityads已经准备好，没准备好可需要将按钮置灰等</li>
+<li>调用ShowRewardVideoUnityAds播放视频广告</li>
+<li>unityads播放完成后会调用之前注册的回调方法onUnityAdsFinish</li>
+</ol>
+	  
+	</div>
+
+	<div>
+  	<center>
+	<div class="pagination">
+<ul class="pagination">
+	 
+		
+          <li class="prev disabled"><a><i class="fa fa-arrow-circle-o-left"></i>上一页</a></li>
+        
+
+        <li><a href="/archives"><i class="fa fa-archive"></i>Archive</a></li>
+
+		
+		   <li class="next"><a href="/homebrew-update-bug/" class="alignright next">下一页<i class="fa fa-arrow-circle-o-right"></i></a></li>         
+        
+	
+</ul>
+</div>
+
+    </center>
+	</div>
+	
+	<!-- comment -->
+	
+<section id="comment">
+  <h2 class="title">留言</h2>
+
+  
+  	 <div class="ds-thread" data-thread-key="unityads添加/" data-title="android工程添加unityads" data-url="http://yoursite.com/unityads添加/"></div>  
+  
+</section>
+
+	</div> <!-- col-md-9/col-md-12 -->
+		
+	
+	<div id="side_meta">
+		<div class="col-md-3" id="post_meta"> 
+
+	<!-- date -->
+	
+	<div class="meta-widget">
+	<i class="fa fa-clock-o"></i>
+	2018-03-01 
+	</div>
+	
+
+	<!-- categories -->
+    
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#categorys"><i class="fa fa-folder"></i></a>	
+    <ul id="categorys" class="tag_box list-unstyled collapse in">
+          
+  <li>
+    <li><a href="/categories/DOODLE/">DOODLE<span>1</span></a></li>
+  </li>
+
+    </ul>
+	</div>
+	
+
+	<!-- tags -->
+	
+	<div class="meta-widget">
+	<a data-toggle="collapse" data-target="#tags"><i class="fa fa-tags"></i></a>		  
+    <ul id="tags" class="tag_box list-unstyled collapse in">	  
+	    
+  <li><a href="/tags/DOODLE/">DOODLE<span>1</span></a></li>
+    </ul>
+	</div>
+		
+
+	<!-- toc -->
+	<div class="meta-widget">
+	
+	</div>
+	
+    <hr>
+	
+</div><!-- col-md-3 -->
+
+	</div>
+		
+
+</div><!-- row -->
+
+<script type="text/javascript">
+  var duoshuoQuery = { short_name: 'runnerloft' };
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';
+    ds.async = true;
+    ds.src = 'http://static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script>
+
+
+
+	</div>
+  </div>
+  <div class="container-narrow">
+  <footer> <p>
+  &copy; 2018 bigstupidx
+  
+      with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
+</p> </footer>
+</div> <!-- container-narrow -->
+  
+
+
+  
+<a id="gotop" href="#">   
+  <span>▲</span> 
+</a>
+
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/main.js"></script>
+<script src="/js/search.js"></script> 
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+
+
+</body>
+   </html>

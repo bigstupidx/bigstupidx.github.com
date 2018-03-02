@@ -19,7 +19,7 @@ You can download a pre-bu">
   <meta property="og:site_name" content="DogLike"/>
 
   
-    <meta property="og:image" content="undefined"/>
+    <meta property="og:image" content=""/>
   
 
   
@@ -111,17 +111,17 @@ You can download a pre-bu">
 	<div class="mypage">		
 	  		
 
-	  <p>rebar在github上源码：<a href="https://github.com/basho/rebar" target="_blank" rel="external">https://github.com/basho/rebar</a><br>wiki界面是：<a href="https://github.com/rebar/rebar/wiki" target="_blank" rel="external">https://github.com/rebar/rebar/wiki</a></p>
-<h4 id="源码编译">源码编译</h4><p>在其<a href="https://github.com/basho/rebar/blob/develop/README.md" target="_blank" rel="external">README.md</a>中已经写好了</p>
+	  <p>rebar在github上源码：<a href="https://github.com/basho/rebar" target="_blank" rel="noopener">https://github.com/basho/rebar</a><br>wiki界面是：<a href="https://github.com/rebar/rebar/wiki" target="_blank" rel="noopener">https://github.com/rebar/rebar/wiki</a></p>
+<h4 id="源码编译"><a href="#源码编译" class="headerlink" title="源码编译"></a>源码编译</h4><p>在其<a href="https://github.com/basho/rebar/blob/develop/README.md" target="_blank" rel="noopener">README.md</a>中已经写好了</p>
 <blockquote>
 <p><strong>Downloading</strong></p>
 <p>You can download a pre-built binary version of rebar from:</p>
-<p><a href="https://github.com/rebar/rebar/wiki/rebar" target="_blank" rel="external">https://github.com/rebar/rebar/wiki/rebar</a></p>
+<p><a href="https://github.com/rebar/rebar/wiki/rebar" target="_blank" rel="noopener">https://github.com/rebar/rebar/wiki/rebar</a></p>
 <p><strong>Building rebar</strong></p>
 <p>$ git clone git://github.com/rebar/rebar.git<br>$ cd rebar<br>$ ./bootstrap<br>Recompile: src/getopt<br>…<br>Recompile: src/rebar_utils<br>==&gt; rebar (compile)<br>Congratulations! You now have a self-contained script called “rebar” in<br>your current working directory. Place this script anywhere in your path<br>and you can use rebar to build OTP-compliant apps.</p>
 </blockquote>
 <p>编译完成之后会生成一个叫<code>rebar</code>的没有任何后缀的文件，可以将这个文件作为常用命令放到<code>/usr/bin/</code>下面</p>
-<p>利用rebar创建并运行erlang项目的文档在此：<a href="https://github.com/rebar/rebar/wiki/Release-handling" target="_blank" rel="external">https://github.com/rebar/rebar/wiki/Release-handling</a></p>
+<p>利用rebar创建并运行erlang项目的文档在此：<a href="https://github.com/rebar/rebar/wiki/Release-handling" target="_blank" rel="noopener">https://github.com/rebar/rebar/wiki/Release-handling</a></p>
 <p>其中用到的rebar的常用命令解释如下：</p>
 <ol>
 <li><code>rebar -V</code> 查看当前rebar的版本</li>
@@ -132,9 +132,9 @@ You can download a pre-bu">
 <li><code>rebar generate</code> 生成</li>
 </ol>
 <p><code>rel/files/vm.args</code>中的一些配置：</p>
-<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">## Name of the node，节点名字，运行node()函数显示的是这个</span></span><br><span class="line">-name xx@<span class="number">192.168</span><span class="number">.0</span><span class="number">.79</span></span><br><span class="line"></span><br><span class="line"><span class="meta">## Cookie for distributed erlang，这个比较重要</span></span><br><span class="line">-setcookie poolmaster</span><br><span class="line"></span><br><span class="line"><span class="meta">## Heartbeat management; auto-restarts VM if it dies or becomes unresponsive</span></span><br><span class="line"><span class="meta">## (Disabled by default..use with caution!)</span></span><br><span class="line"><span class="meta">##-heart</span></span><br><span class="line"></span><br><span class="line"><span class="meta">## Enable kernel poll and a few async threads</span></span><br><span class="line"><span class="meta">## epoll是否启用，线上服务器最好启用</span></span><br><span class="line">+K <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="meta">## Increase number of concurrent ports/sockets</span></span><br><span class="line"><span class="meta">## 更改最大线程数，线上服务器最好做一下更改</span></span><br><span class="line">-env ERL_MAX_PORTS <span class="number">999999</span></span><br><span class="line">+P <span class="number">1000000</span></span><br><span class="line"><span class="meta">## 启用多核，线上服务器最好启用</span></span><br><span class="line">-smp enable</span><br><span class="line">+A <span class="number">4</span></span><br><span class="line">-kernel inet_dist_listen_min <span class="number">9000</span></span><br><span class="line">-kernel inet_dist_listen_max <span class="number">9999</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># Name of the node，节点名字，运行node()函数显示的是这个</span></span></span><br><span class="line">-name xx@192.168.0.79</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># Cookie for distributed erlang，这个比较重要</span></span></span><br><span class="line">-setcookie poolmaster</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># Heartbeat management; auto-restarts VM if it dies or becomes unresponsive</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># (Disabled by default..use with caution!)</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#-heart</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># Enable kernel poll and a few async threads</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># epoll是否启用，线上服务器最好启用</span></span></span><br><span class="line">+K true</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># Increase number of concurrent ports/sockets</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 更改最大线程数，线上服务器最好做一下更改</span></span></span><br><span class="line">-env ERL_MAX_PORTS 999999</span><br><span class="line">+P 1000000</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 启用多核，线上服务器最好启用</span></span></span><br><span class="line">-smp enable</span><br><span class="line">+A 4</span><br><span class="line">-kernel inet_dist_listen_min 9000</span><br><span class="line">-kernel inet_dist_listen_max 9999</span><br></pre></td></tr></table></figure>
 <p><code>rel/XXX/bin/XXX start</code>和<code>rel/XXX/bin/XXX console</code> 都是启动这个XXX节点，不能同时使用，有个同事使用start之后再使用console出错，<code>Protocol: ~tp: the name myapp@192.168.2.140 seems to be in use by another Erlang node&quot;,[&quot;inet_tcp&quot;]}</code> 问我是不是代码写错了。我一般是使用<code>XXX start</code>之后，使用<code>XXX remote_console</code>来连上XXX节点，因为线上服务器使用attach会看到很多很多log，而remote_console是一个干净的环境（看不到log）</p>
-<p>vm的设置参考：<br><a href="http://itindex.net/detail/43819-%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%AC%94%E8%AE%B0-erlang" target="_blank" rel="external">100万并发连接服务器笔记之Erlang完成1M并发连接目标</a></p>
+<p>vm的设置参考：<br><a href="http://itindex.net/detail/43819-%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%AC%94%E8%AE%B0-erlang" target="_blank" rel="noopener">100万并发连接服务器笔记之Erlang完成1M并发连接目标</a></p>
 	  
 	</div>
 
@@ -240,7 +240,7 @@ You can download a pre-bu">
   </div>
   <div class="container-narrow">
   <footer> <p>
-  &copy; 2016 bigstupidx
+  &copy; 2018 bigstupidx
   
       with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
 </p> </footer>
@@ -269,15 +269,6 @@ You can download a pre-bu">
 </script>
 
 
-
-   <script type="text/javascript">      
-     var search_path = "search.xml";
-	 if (search_path.length == 0) {
-	 	search_path = "search.xml";
-	 }
-	 var path = "/" + search_path;
-     searchFunc(path, 'local-search-input', 'local-search-result');
-   </script>
 
 </body>
    </html>

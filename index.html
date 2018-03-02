@@ -13,7 +13,7 @@
   <meta property="og:site_name" content="DogLike"/>
 
   
-    <meta property="og:image" content="undefined"/>
+    <meta property="og:image" content=""/>
   
 
   
@@ -106,6 +106,53 @@
 	
 	<!-- display as entry -->	
 		<h3 class="title">
+			<div class="date"> 2018-03-01 </div>
+			<div class="article-title"><a href="/unityads添加/" >android工程添加unityads</a></div>						
+		</h3>
+	
+
+
+			<div class="entry">
+  <div class="row">
+	
+	
+		<p>unityads的官方文档：<br><a href="https://unityads.unity3d.com/help/index" target="_blank" rel="noopener">https://unityads.unity3d.com/help/index</a></p>
+<p>unityads的官方github：<br><a href="https://github.com/Unity-Technologies/unity-ads-android" target="_blank" rel="noopener">https://github.com/Unity-Technologies/unity-ads-android</a></p>
+<p>1、unityads.jar下载</p>
+<ul>
+<li>从其github的<a href="https://github.com/Unity-Technologies/unity-ads-android/releases" target="_blank" rel="noopener">release</a>中下载unity-ads.zip，解压之后里面应该有unity-ads.jar</li>
+<li>百度网盘：链接:<a href="https://pan.baidu.com/s/1dAbx3S" target="_blank" rel="noopener">https://pan.baidu.com/s/1dAbx3S</a>  密码:d3dm</li>
+</ul>
+<p>2、将unityads.jar添加到android工程的libs下面</p>
+<p>3、启动Activity的MainAcivity.java 中 添加</p>
+<figure class="highlight scala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">public <span class="class"><span class="keyword">class</span> <span class="title">MainActivity</span> <span class="keyword">extends</span> <span class="title">Activity</span> <span class="title">implements</span> <span class="title">IUnityAdsListener</span></span>&#123;</span><br><span class="line">	...</span><br><span class="line">	...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>4、实现IUnityAdsListener接口</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"> <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onUnityAdsReady</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">      Log.w(<span class="string">"tag"</span>, <span class="string">"UnityAds onUnityAdsReady"</span> + s);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onUnityAdsStart</span><span class="params">(String s)</span> </span>&#123;</span><br><span class="line">      Log.w(<span class="string">"tag"</span>, <span class="string">"onUnityAdsStart"</span> + s);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onUnityAdsFinish</span><span class="params">(String s, UnityAds.FinishState finishState)</span> </span>&#123;</span><br><span class="line">      Log.w(<span class="string">"tag"</span>, <span class="string">"UnityAds onUnityAdsFinish callback"</span>);</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line"><span class="comment">//此处为播放结束的回调方法，若不是unity项目，请调用自己的回调方法.</span></span><br><span class="line">          UnityPlayer.UnitySendMessage(<span class="string">"_Platform"</span>, <span class="string">"UnityAdsCallBack"</span>, s);</span><br><span class="line">      &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">          e.printStackTrace();</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="meta">@Override</span></span><br><span class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">onUnityAdsError</span><span class="params">(UnityAds.UnityAdsError unityAdsError, String s)</span> </span>&#123;</span><br><span class="line">      Log.w(<span class="string">"tag"</span>, <span class="string">"onUnityAdsError"</span> + unityAdsError + s);</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>5、onCreate函数的最后添加</p>
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">         API_LEVEL = Build.VERSION.SDK_INT;</span><br><span class="line">   &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">         e.printStackTrace();</span><br><span class="line">   &#125;</span><br><span class="line">Log.w(<span class="string">"tag"</span>, <span class="string">"==== UnityAds onCreate initialize111: "</span> + API_LEVEL);</span><br><span class="line"><span class="keyword">if</span> (API_LEVEL &gt;= <span class="number">9</span>) &#123;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        UnityAds.initialize(<span class="keyword">this</span>, <span class="string">"idReplace"</span>, <span class="keyword">this</span>);</span><br><span class="line">        UnityAds.setListener(<span class="keyword">this</span>);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>6、添加两个从unity中调用的方法：</p>
+<figure class="highlight aspectj"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">ShowRewardVideoUnityAds</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Log.w(<span class="string">"tag"</span>, <span class="string">"show UnityAds video unity ads!"</span>);</span><br><span class="line">    MainActivity.<span class="keyword">this</span>.runOnUiThread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line">        <span class="meta">@Override</span></span><br><span class="line">        <span class="keyword">public</span> <span class="function"><span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                <span class="keyword">if</span> (UnityAds.isReady()) &#123;</span><br><span class="line">                    UnityAds.show(MainActivity.<span class="keyword">this</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">                e.printStackTrace();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">boolean</span> <span class="title">IsUnityAdsReady</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (API_LEVEL &lt; <span class="number">9</span>) <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="function"><span class="keyword">return</span> UnityAds.<span class="title">isReady</span><span class="params">()</span></span>;</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception e) &#123;</span><br><span class="line">        e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>AndroidManifest.xml中添加：</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- unity ads --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">activity</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:name</span>=<span class="string">"com.unity3d.ads.adunit.AdUnitActivity"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:configChanges</span>=<span class="string">"fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:hardwareAccelerated</span>=<span class="string">"true"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:theme</span>=<span class="string">"@android:style/Theme.NoTitleBar.Fullscreen"</span> /&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;<span class="name">activity</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:name</span>=<span class="string">"com.unity3d.ads.adunit.AdUnitSoftwareActivity"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:configChanges</span>=<span class="string">"fontScale|keyboard|keyboardHidden|locale|mnc|mcc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode|touchscreen"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:hardwareAccelerated</span>=<span class="string">"false"</span></span></span><br><span class="line"><span class="tag">          <span class="attr">android:theme</span>=<span class="string">"@android:style/Theme.NoTitleBar.Fullscreen"</span> /&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="unityads调用的基本流程"><a href="#unityads调用的基本流程" class="headerlink" title="unityads调用的基本流程"></a>unityads调用的基本流程</h5><ol>
+<li>onCreate中初始化unityads，并且设置好unityads的回调监听IUnityAdsListener为MainActivity自己</li>
+<li>显示视屏广告按钮的时候调用IsUnityAdsReady判断unityads已经准备好，没准备好可需要将按钮置灰等</li>
+<li>调用ShowRewardVideoUnityAds播放视频广告</li>
+<li>unityads播放完成后会调用之前注册的回调方法onUnityAdsFinish</li>
+</ol>
+
+	
+	</div>
+  <a type="button" href="/unityads添加/#more" class="btn btn-default more">阅读此文</a>
+</div>
+
+		
+			
+	
+	<!-- display as entry -->	
+		<h3 class="title">
 			<div class="date"> 2016-08-24 </div>
 			<div class="article-title"><a href="/homebrew-update-bug/" >Homebrew 更新Bug</a></div>						
 		</h3>
@@ -116,8 +163,8 @@
   <div class="row">
 	
 	
-		<p>最新更新brew一直提示Already up-to-date，感觉不太对劲，到<a href="https://github.com/Homebrew/brew" target="_blank" rel="external">homebrew的github主页</a>上看了看，果然：</p>
-<h4 id="Update_Bug">Update Bug</h4><p>If Homebrew was updated on Aug 10-11th 2016 and <code>brew update</code> always says <code>Already up-to-date.</code> you need to run:</p>
+		<p>最新更新brew一直提示Already up-to-date，感觉不太对劲，到<a href="https://github.com/Homebrew/brew" target="_blank" rel="noopener">homebrew的github主页</a>上看了看，果然：</p>
+<h4 id="Update-Bug"><a href="#Update-Bug" class="headerlink" title="Update Bug"></a>Update Bug</h4><p>If Homebrew was updated on Aug 10-11th 2016 and <code>brew update</code> always says <code>Already up-to-date.</code> you need to run:</p>
 <figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">cd</span> $(brew --repo); <span class="attribute">git</span> fetch; <span class="attribute">git</span> reset --hard origin/master; <span class="attribute">brew</span> update</span><br></pre></td></tr></table></figure>
 
 	
@@ -143,14 +190,14 @@
 		<p>今天在sublime text2运行一个python脚本的时候出现了<strong><code>no module named bs4</code></strong>，bs4是python中beautifulsoup库的简写，按照bs4的安装命令</p>
 <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip <span class="keyword">install</span> beautifulsoup4</span><br></pre></td></tr></table></figure>
 <p>安装之后发现sublime下依然无法正确运行，<br>在iTerm终端的直接执行的python命令行中却可以<code>import bs4</code>的，推想可能安装了多个python版本<br>验证如下：</p>
-<figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">➜  aws  python</span><br><span class="line">Python <span class="number">2.7</span>.<span class="number">11</span> (default, Dec  <span class="number">5</span> <span class="number">2015</span>, <span class="number">14</span><span class="symbol">:</span><span class="number">44</span><span class="symbol">:</span><span class="number">53</span>)</span><br><span class="line">[GCC <span class="number">4.2</span>.<span class="number">1</span> Compatible Apple LLVM <span class="number">7.0</span>.<span class="number">0</span> (clang-<span class="number">700.1</span>.<span class="number">76</span>)] on darwin</span><br><span class="line">Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> <span class="keyword">or</span> <span class="string">"license"</span> <span class="keyword">for</span> more information.</span><br><span class="line"><span class="meta">&gt;&gt;</span>&gt; import bs4</span><br><span class="line"><span class="meta">&gt;&gt;</span>&gt; quit()</span><br><span class="line">➜  aws  ./spiderx.py</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"./spiderx.py"</span>, line <span class="number">5</span>, <span class="keyword">in</span> &lt;<span class="class"><span class="keyword">module</span>&gt;</span></span><br><span class="line">    from bs4 import BeautifulSoup</span><br><span class="line"><span class="symbol">ImportError:</span> No <span class="class"><span class="keyword">module</span> <span class="title">named</span> <span class="title">bs4</span></span></span><br><span class="line">➜  aws  whereis python</span><br><span class="line">/usr/bin/python</span><br><span class="line">➜  aws  python</span><br><span class="line">Python <span class="number">2.7</span>.<span class="number">11</span> (default, Dec  <span class="number">5</span> <span class="number">2015</span>, <span class="number">14</span><span class="symbol">:</span><span class="number">44</span><span class="symbol">:</span><span class="number">53</span>)</span><br><span class="line">[GCC <span class="number">4.2</span>.<span class="number">1</span> Compatible Apple LLVM <span class="number">7.0</span>.<span class="number">0</span> (clang-<span class="number">700.1</span>.<span class="number">76</span>)] on darwin</span><br><span class="line">Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> <span class="keyword">or</span> <span class="string">"license"</span> <span class="keyword">for</span> more information.</span><br><span class="line"><span class="meta">&gt;&gt;</span>&gt; quit()</span><br><span class="line">➜  aws  /usr/bin/python</span><br><span class="line">Python <span class="number">2.7</span>.<span class="number">10</span> (default, Oct <span class="number">23</span> <span class="number">2015</span>, <span class="number">18</span><span class="symbol">:</span><span class="number">05</span><span class="symbol">:</span><span class="number">06</span>)</span><br><span class="line">[GCC <span class="number">4.2</span>.<span class="number">1</span> Compatible Apple LLVM <span class="number">7.0</span>.<span class="number">0</span> (clang-<span class="number">700.0</span>.<span class="number">59.5</span>)] on darwin</span><br><span class="line">Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> <span class="keyword">or</span> <span class="string">"license"</span> <span class="keyword">for</span> more information.</span><br><span class="line"><span class="meta">&gt;&gt;</span>&gt; import bs4</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;<span class="class"><span class="keyword">module</span>&gt;</span></span><br><span class="line"><span class="symbol">ImportError:</span> No <span class="class"><span class="keyword">module</span> <span class="title">named</span> <span class="title">bs4</span></span></span><br><span class="line"><span class="meta">&gt;&gt;</span>&gt;</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">➜  aws  python</span><br><span class="line">Python 2.7.11 (default, Dec  5 2015, 14:44:53)</span><br><span class="line">[GCC 4.2.1 Compatible Apple LLVM 7.0.0 (clang-700.1.76)] on darwin</span><br><span class="line">Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> <span class="keyword">or</span> <span class="string">"license"</span> <span class="keyword">for</span> more information.</span><br><span class="line">&gt;&gt;&gt; import bs4</span><br><span class="line">&gt;&gt;&gt; quit()</span><br><span class="line">➜  aws  ./spiderx.py</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"./spiderx.py"</span>, line 5, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">    <span class="keyword">from</span> bs4 import BeautifulSoup</span><br><span class="line">ImportError: <span class="literal">No</span> module named bs4</span><br><span class="line">➜  aws  whereis python</span><br><span class="line">/usr/bin/python</span><br><span class="line">➜  aws  python</span><br><span class="line">Python 2.7.11 (default, Dec  5 2015, 14:44:53)</span><br><span class="line">[GCC 4.2.1 Compatible Apple LLVM 7.0.0 (clang-700.1.76)] on darwin</span><br><span class="line">Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> <span class="keyword">or</span> <span class="string">"license"</span> <span class="keyword">for</span> more information.</span><br><span class="line">&gt;&gt;&gt; quit()</span><br><span class="line">➜  aws  /usr/bin/python</span><br><span class="line">Python 2.7.10 (default, Oct 23 2015, 18:05:06)</span><br><span class="line">[GCC 4.2.1 Compatible Apple LLVM 7.0.0 (clang-700.0.59.5)] on darwin</span><br><span class="line">Type <span class="string">"help"</span>, <span class="string">"copyright"</span>, <span class="string">"credits"</span> <span class="keyword">or</span> <span class="string">"license"</span> <span class="keyword">for</span> more information.</span><br><span class="line">&gt;&gt;&gt; import bs4</span><br><span class="line">Traceback (most recent call last):</span><br><span class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line 1, <span class="keyword">in</span> &lt;module&gt;</span><br><span class="line">ImportError: <span class="literal">No</span> module named bs4</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure>
 <p>发现确实安装了两个版本的python，一个是2.7.10，一个是2.7.11，有一个应该是自带的，另外一个应该是通过brew安装的，在usr/local/bin/下面，而sublime中使用的应该是/usr/bin/python，因为在py文件的开头有</p>
 <figure class="highlight d"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/python</span></span><br><span class="line">#-*- coding: UTF-<span class="number">8</span> -*-</span><br></pre></td></tr></table></figure>
 <p>解决方法，删掉brew安装的版本(删除自带的版本貌似比较麻烦，而且都是2.7就没有必要了)<br><code>brew uninstall python</code><br>再运行python的时候进入的是2.7.10，表示2.7.11已经删除</p>
 <p>如此可以再安装bs4，使用如下命令：<br><code>sudo pip install beautifulsoup4</code><br>提示pip command not found，汗。。</p>
 <p>使用<code>brew install pip</code>命令，达到如下结果</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">➜  ~  brew <span class="keyword">install</span> pip</span><br><span class="line"><span class="keyword">Error</span>: <span class="keyword">No</span> available formula <span class="keyword">with</span> the <span class="keyword">name</span> <span class="string">"pip"</span></span><br><span class="line">Homebrew provides pip via: <span class="string">`brew install python`</span>. However you will <span class="keyword">then</span></span><br><span class="line">have two Pythons installed <span class="keyword">on</span> your Mac, so alternatively you can <span class="keyword">install</span></span><br><span class="line">pip via the instructions <span class="keyword">at</span>:</span><br><span class="line"></span><br><span class="line">  https://pip.readthedocs.org/en/stable/installing/#<span class="keyword">install</span>-pip</span><br><span class="line">➜  ~</span><br></pre></td></tr></table></figure>
-<p>直接进入那个地址看看，<a href="https://pip.readthedocs.org/en/stable/installing/#install-pip" target="_blank" rel="external">https://pip.readthedocs.org/en/stable/installing/#install-pip</a></p>
+<p>直接进入那个地址看看，<a href="https://pip.readthedocs.org/en/stable/installing/#install-pip" target="_blank" rel="noopener">https://pip.readthedocs.org/en/stable/installing/#install-pip</a></p>
 <p>按照步骤安装pip即可<br>中间遇到了权限问题，加上sudo就可以了</p>
 
 	
@@ -173,17 +220,17 @@
   <div class="row">
 	
 	
-		<p>rebar在github上源码：<a href="https://github.com/basho/rebar" target="_blank" rel="external">https://github.com/basho/rebar</a><br>wiki界面是：<a href="https://github.com/rebar/rebar/wiki" target="_blank" rel="external">https://github.com/rebar/rebar/wiki</a></p>
-<h4 id="源码编译">源码编译</h4><p>在其<a href="https://github.com/basho/rebar/blob/develop/README.md" target="_blank" rel="external">README.md</a>中已经写好了</p>
+		<p>rebar在github上源码：<a href="https://github.com/basho/rebar" target="_blank" rel="noopener">https://github.com/basho/rebar</a><br>wiki界面是：<a href="https://github.com/rebar/rebar/wiki" target="_blank" rel="noopener">https://github.com/rebar/rebar/wiki</a></p>
+<h4 id="源码编译"><a href="#源码编译" class="headerlink" title="源码编译"></a>源码编译</h4><p>在其<a href="https://github.com/basho/rebar/blob/develop/README.md" target="_blank" rel="noopener">README.md</a>中已经写好了</p>
 <blockquote>
 <p><strong>Downloading</strong></p>
 <p>You can download a pre-built binary version of rebar from:</p>
-<p><a href="https://github.com/rebar/rebar/wiki/rebar" target="_blank" rel="external">https://github.com/rebar/rebar/wiki/rebar</a></p>
+<p><a href="https://github.com/rebar/rebar/wiki/rebar" target="_blank" rel="noopener">https://github.com/rebar/rebar/wiki/rebar</a></p>
 <p><strong>Building rebar</strong></p>
 <p>$ git clone git://github.com/rebar/rebar.git<br>$ cd rebar<br>$ ./bootstrap<br>Recompile: src/getopt<br>…<br>Recompile: src/rebar_utils<br>==&gt; rebar (compile)<br>Congratulations! You now have a self-contained script called “rebar” in<br>your current working directory. Place this script anywhere in your path<br>and you can use rebar to build OTP-compliant apps.</p>
 </blockquote>
 <p>编译完成之后会生成一个叫<code>rebar</code>的没有任何后缀的文件，可以将这个文件作为常用命令放到<code>/usr/bin/</code>下面</p>
-<p>利用rebar创建并运行erlang项目的文档在此：<a href="https://github.com/rebar/rebar/wiki/Release-handling" target="_blank" rel="external">https://github.com/rebar/rebar/wiki/Release-handling</a></p>
+<p>利用rebar创建并运行erlang项目的文档在此：<a href="https://github.com/rebar/rebar/wiki/Release-handling" target="_blank" rel="noopener">https://github.com/rebar/rebar/wiki/Release-handling</a></p>
 <p>其中用到的rebar的常用命令解释如下：</p>
 <ol>
 <li><code>rebar -V</code> 查看当前rebar的版本</li>
@@ -194,9 +241,9 @@
 <li><code>rebar generate</code> 生成</li>
 </ol>
 <p><code>rel/files/vm.args</code>中的一些配置：</p>
-<figure class="highlight vala"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">## Name of the node，节点名字，运行node()函数显示的是这个</span></span><br><span class="line">-name xx@<span class="number">192.168</span><span class="number">.0</span><span class="number">.79</span></span><br><span class="line"></span><br><span class="line"><span class="meta">## Cookie for distributed erlang，这个比较重要</span></span><br><span class="line">-setcookie poolmaster</span><br><span class="line"></span><br><span class="line"><span class="meta">## Heartbeat management; auto-restarts VM if it dies or becomes unresponsive</span></span><br><span class="line"><span class="meta">## (Disabled by default..use with caution!)</span></span><br><span class="line"><span class="meta">##-heart</span></span><br><span class="line"></span><br><span class="line"><span class="meta">## Enable kernel poll and a few async threads</span></span><br><span class="line"><span class="meta">## epoll是否启用，线上服务器最好启用</span></span><br><span class="line">+K <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="meta">## Increase number of concurrent ports/sockets</span></span><br><span class="line"><span class="meta">## 更改最大线程数，线上服务器最好做一下更改</span></span><br><span class="line">-env ERL_MAX_PORTS <span class="number">999999</span></span><br><span class="line">+P <span class="number">1000000</span></span><br><span class="line"><span class="meta">## 启用多核，线上服务器最好启用</span></span><br><span class="line">-smp enable</span><br><span class="line">+A <span class="number">4</span></span><br><span class="line">-kernel inet_dist_listen_min <span class="number">9000</span></span><br><span class="line">-kernel inet_dist_listen_max <span class="number">9999</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># Name of the node，节点名字，运行node()函数显示的是这个</span></span></span><br><span class="line">-name xx@192.168.0.79</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># Cookie for distributed erlang，这个比较重要</span></span></span><br><span class="line">-setcookie poolmaster</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># Heartbeat management; auto-restarts VM if it dies or becomes unresponsive</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># (Disabled by default..use with caution!)</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment">#-heart</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># Enable kernel poll and a few async threads</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># epoll是否启用，线上服务器最好启用</span></span></span><br><span class="line">+K true</span><br><span class="line"></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># Increase number of concurrent ports/sockets</span></span></span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 更改最大线程数，线上服务器最好做一下更改</span></span></span><br><span class="line">-env ERL_MAX_PORTS 999999</span><br><span class="line">+P 1000000</span><br><span class="line"><span class="meta">#</span><span class="bash"><span class="comment"># 启用多核，线上服务器最好启用</span></span></span><br><span class="line">-smp enable</span><br><span class="line">+A 4</span><br><span class="line">-kernel inet_dist_listen_min 9000</span><br><span class="line">-kernel inet_dist_listen_max 9999</span><br></pre></td></tr></table></figure>
 <p><code>rel/XXX/bin/XXX start</code>和<code>rel/XXX/bin/XXX console</code> 都是启动这个XXX节点，不能同时使用，有个同事使用start之后再使用console出错，<code>Protocol: ~tp: the name myapp@192.168.2.140 seems to be in use by another Erlang node&quot;,[&quot;inet_tcp&quot;]}</code> 问我是不是代码写错了。我一般是使用<code>XXX start</code>之后，使用<code>XXX remote_console</code>来连上XXX节点，因为线上服务器使用attach会看到很多很多log，而remote_console是一个干净的环境（看不到log）</p>
-<p>vm的设置参考：<br><a href="http://itindex.net/detail/43819-%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%AC%94%E8%AE%B0-erlang" target="_blank" rel="external">100万并发连接服务器笔记之Erlang完成1M并发连接目标</a></p>
+<p>vm的设置参考：<br><a href="http://itindex.net/detail/43819-%E6%9C%8D%E5%8A%A1%E5%99%A8-%E7%AC%94%E8%AE%B0-erlang" target="_blank" rel="noopener">100万并发连接服务器笔记之Erlang完成1M并发连接目标</a></p>
 
 	
 	</div>
@@ -218,23 +265,23 @@
   <div class="row">
 	
 	
-		<p>在查找erlang性能优化方面文章的时候看到这篇文章<a href="http://erlangdisplay.iteye.com/blog/1214167" target="_blank" rel="external">Erlang服务器内存耗尽bug跟踪过程</a>，提到尾递归，作者在最后给出了验证程序，我稍作调整如下：</p>
+		<p>在查找erlang性能优化方面文章的时候看到这篇文章<a href="http://erlangdisplay.iteye.com/blog/1214167" target="_blank" rel="noopener">Erlang服务器内存耗尽bug跟踪过程</a>，提到尾递归，作者在最后给出了验证程序，我稍作调整如下：</p>
 <figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">-module</span><span class="params">(test)</span>.</span><br><span class="line"><span class="keyword">-compile</span><span class="params">([export_all])</span>.</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">t1</span><span class="params">()</span> -&gt;</span></span><br><span class="line">  Pid = spawn(<span class="keyword">fun</span>() -&gt; do_t1() <span class="keyword">end</span>),</span><br><span class="line">  send_msg(Pid, <span class="number">100000</span>).</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">t2</span><span class="params">()</span> -&gt;</span></span><br><span class="line">  Pid = spawn(<span class="keyword">fun</span>() -&gt; do_t2() <span class="keyword">end</span>),</span><br><span class="line">  send_msg(Pid, <span class="number">100000</span>).</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">send_msg</span><span class="params">(_Pid, <span class="number">0</span>)</span> -&gt;</span></span><br><span class="line">  ok;</span><br><span class="line"><span class="function"><span class="title">send_msg</span><span class="params">(Pid, N)</span> -&gt;</span></span><br><span class="line">  Pid ! &lt;&lt;<span class="number">2</span>:(N)&gt;&gt;,</span><br><span class="line">  timer:sleep(<span class="number">200</span>),</span><br><span class="line">  send_msg(Pid, N - <span class="number">1</span>).</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">do_t1</span><span class="params">()</span> -&gt;</span></span><br><span class="line">  erlang:garbage_collect(self()),</span><br><span class="line">  Result = erlang:process_info(self(), [memory, garbage_collection]),</span><br><span class="line">  io:format(<span class="string">"~w ~n"</span>, [Result]),</span><br><span class="line">  io:format(<span class="string">"stack_size:~w~n~n"</span>, [erlang:process_info(self(), stack_size)]),</span><br><span class="line">  <span class="keyword">try</span></span><br><span class="line">    <span class="keyword">receive</span></span><br><span class="line">      _ -&gt;</span><br><span class="line">        do_t1()<span class="comment">%%第一处</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line">  <span class="keyword">catch</span></span><br><span class="line">    _:_ -&gt;</span><br><span class="line">      do_t1()<span class="comment">%%第二处</span></span><br><span class="line">  <span class="keyword">end</span>.</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="title">do_t2</span><span class="params">()</span> -&gt;</span></span><br><span class="line">  erlang:garbage_collect(self()),</span><br><span class="line">  Result = erlang:process_info(self(), [memory, garbage_collection]),</span><br><span class="line">  io:format(<span class="string">"~w ~n"</span>, [Result]),</span><br><span class="line">  io:format(<span class="string">"stack_size:~w~n~n"</span>, [erlang:process_info(self(),stack_size)]),</span><br><span class="line">  <span class="keyword">receive</span></span><br><span class="line">    _ -&gt;</span><br><span class="line">      do_t2()</span><br><span class="line">  <span class="keyword">end</span>.</span><br></pre></td></tr></table></figure>
 <p>执行<code>erlc test.erl &amp;&amp; erl -eval &quot;test:t1()&quot;</code>得到如下结果：</p>
 <figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[&#123;memory,<span class="number">2680</span>&#125;,&#123;garbage_collection,[&#123;min_bin_vheap_size,<span class="number">46422</span>&#125;,&#123;min_heap_size,<span class="number">233</span>&#125;,&#123;fullsweep_after,<span class="number">65535</span>&#125;,&#123;minor_gcs,<span class="number">0</span>&#125;]&#125;]</span><br><span class="line">stack_size:&#123;stack_size,<span class="number">12</span>&#125;</span><br><span class="line"></span><br><span class="line">[&#123;memory,<span class="number">2680</span>&#125;,&#123;garbage_collection,[&#123;min_bin_vheap_size,<span class="number">46422</span>&#125;,&#123;min_heap_size,<span class="number">233</span>&#125;,&#123;fullsweep_after,<span class="number">65535</span>&#125;,&#123;minor_gcs,<span class="number">0</span>&#125;]&#125;]</span><br><span class="line">stack_size:&#123;stack_size,<span class="number">14</span>&#125;</span><br><span class="line"></span><br><span class="line">[&#123;memory,<span class="number">2680</span>&#125;,&#123;garbage_collection,[&#123;min_bin_vheap_size,<span class="number">46422</span>&#125;,&#123;min_heap_size,<span class="number">233</span>&#125;,&#123;fullsweep_after,<span class="number">65535</span>&#125;,&#123;minor_gcs,<span class="number">0</span>&#125;]&#125;]</span><br><span class="line">stack_size:&#123;stack_size,<span class="number">16</span>&#125;</span><br></pre></td></tr></table></figure>
 <p>执行<code>erlc test.erl &amp;&amp; erl -eval &quot;test:t2()&quot;</code>得到如下结果：</p>
 <figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[&#123;memory,<span class="number">2680</span>&#125;,&#123;garbage_collection,[&#123;min_bin_vheap_size,<span class="number">46422</span>&#125;,&#123;min_heap_size,<span class="number">233</span>&#125;,&#123;fullsweep_after,<span class="number">65535</span>&#125;,&#123;minor_gcs,<span class="number">0</span>&#125;]&#125;]</span><br><span class="line">stack_size:&#123;stack_size,<span class="number">1</span>&#125;</span><br><span class="line"></span><br><span class="line">[&#123;memory,<span class="number">2680</span>&#125;,&#123;garbage_collection,[&#123;min_bin_vheap_size,<span class="number">46422</span>&#125;,&#123;min_heap_size,<span class="number">233</span>&#125;,&#123;fullsweep_after,<span class="number">65535</span>&#125;,&#123;minor_gcs,<span class="number">0</span>&#125;]&#125;]</span><br><span class="line">stack_size:&#123;stack_size,<span class="number">1</span>&#125;</span><br><span class="line"></span><br><span class="line">[&#123;memory,<span class="number">2680</span>&#125;,&#123;garbage_collection,[&#123;min_bin_vheap_size,<span class="number">46422</span>&#125;,&#123;min_heap_size,<span class="number">233</span>&#125;,&#123;fullsweep_after,<span class="number">65535</span>&#125;,&#123;minor_gcs,<span class="number">0</span>&#125;]&#125;]</span><br><span class="line">stack_size:&#123;stack_size,<span class="number">1</span>&#125;</span><br></pre></td></tr></table></figure>
 <p>可以看出stack_size在不停增长，确实不是尾递归方式，我们程序没有出错，应该没有进入到catch得block中，故而try catch中的do_t1才是造成非尾递归的原因。<br>评论中@chaoslawful提出了合理的解释，并提到了一种字节码的方式，使用命令<br><code>erlc +&quot;&#39;S&#39;&quot; test.erl</code> 可以清晰看出在do_t1的字节码中可以看到</p>
-<figure class="highlight xquery"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"> <span class="number">97</span>     &#123;<span class="string">'try'</span>,&#123;y,<span class="number">0</span>&#125;,&#123;f,<span class="number">13</span>&#125;&#125;.</span><br><span class="line"> <span class="number">98</span>     &#123;line,[&#123;location,<span class="string">"test.erl"</span>,<span class="number">26</span>&#125;]&#125;.</span><br><span class="line"> <span class="number">99</span>   &#123;label,<span class="number">10</span>&#125;.</span><br><span class="line"><span class="number">100</span>     &#123;loop_rec,&#123;f,<span class="number">11</span>&#125;,&#123;x,<span class="number">0</span>&#125;&#125;.</span><br><span class="line"><span class="number">101</span>     remove_message.</span><br><span class="line"><span class="number">102</span>     &#123;line,[&#123;location,<span class="string">"test.erl"</span>,<span class="number">28</span>&#125;]&#125;.</span><br><span class="line"><span class="number">103</span>     &#123;call,<span class="number">0</span>,&#123;f,<span class="number">9</span>&#125;&#125;.</span><br><span class="line"><span class="number">104</span>     &#123;jump,&#123;f,<span class="number">12</span>&#125;&#125;.</span><br><span class="line"><span class="number">105</span>   &#123;label,<span class="number">11</span>&#125;.</span><br><span class="line"><span class="number">106</span>     &#123;wait,&#123;f,<span class="number">10</span>&#125;&#125;.</span><br><span class="line"><span class="number">107</span>   &#123;label,<span class="number">12</span>&#125;.</span><br><span class="line"><span class="number">108</span>     &#123;try_end,&#123;y,<span class="number">0</span>&#125;&#125;.</span><br><span class="line"><span class="number">109</span>     &#123;deallocate,<span class="number">1</span>&#125;.</span><br><span class="line"><span class="number">110</span>     <span class="keyword">return</span>.</span><br><span class="line"><span class="number">111</span>   &#123;label,<span class="number">13</span>&#125;.</span><br><span class="line"><span class="number">112</span>     &#123;try_case,&#123;y,<span class="number">0</span>&#125;&#125;.</span><br><span class="line"><span class="number">113</span>     &#123;call_last,<span class="number">0</span>,&#123;f,<span class="number">9</span>&#125;,<span class="number">1</span>&#125;.</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<figure class="highlight lsl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"> <span class="number">97</span>     &#123;'try',&#123;y,<span class="number">0</span>&#125;,&#123;f,<span class="number">13</span>&#125;&#125;.</span><br><span class="line"> <span class="number">98</span>     &#123;line,[&#123;location,<span class="string">"test.erl"</span>,<span class="number">26</span>&#125;]&#125;.</span><br><span class="line"> <span class="number">99</span>   &#123;label,<span class="number">10</span>&#125;.</span><br><span class="line"><span class="number">100</span>     &#123;loop_rec,&#123;f,<span class="number">11</span>&#125;,&#123;x,<span class="number">0</span>&#125;&#125;.</span><br><span class="line"><span class="number">101</span>     remove_message.</span><br><span class="line"><span class="number">102</span>     &#123;line,[&#123;location,<span class="string">"test.erl"</span>,<span class="number">28</span>&#125;]&#125;.</span><br><span class="line"><span class="number">103</span>     &#123;call,<span class="number">0</span>,&#123;f,<span class="number">9</span>&#125;&#125;.</span><br><span class="line"><span class="number">104</span>     &#123;jump,&#123;f,<span class="number">12</span>&#125;&#125;.</span><br><span class="line"><span class="number">105</span>   &#123;label,<span class="number">11</span>&#125;.</span><br><span class="line"><span class="number">106</span>     &#123;wait,&#123;f,<span class="number">10</span>&#125;&#125;.</span><br><span class="line"><span class="number">107</span>   &#123;label,<span class="number">12</span>&#125;.</span><br><span class="line"><span class="number">108</span>     &#123;try_end,&#123;y,<span class="number">0</span>&#125;&#125;.</span><br><span class="line"><span class="number">109</span>     &#123;deallocate,<span class="number">1</span>&#125;.</span><br><span class="line"><span class="number">110</span>     return.</span><br><span class="line"><span class="number">111</span>   &#123;label,<span class="number">13</span>&#125;.</span><br><span class="line"><span class="number">112</span>     &#123;try_case,&#123;y,<span class="number">0</span>&#125;&#125;.</span><br><span class="line"><span class="number">113</span>     &#123;call_last,<span class="number">0</span>,&#123;f,<span class="number">9</span>&#125;,<span class="number">1</span>&#125;.</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 <p>在try开始之后有call，而在try_case后面使用的是call_last<br>而在do_t2的字节码中没有找到call，只有call_last</p>
-<h4 id="关于erlang字节码">关于erlang字节码</h4><p>有两种生成方式，生成的结果也不太一样</p>
+<h4 id="关于erlang字节码"><a href="#关于erlang字节码" class="headerlink" title="关于erlang字节码"></a>关于erlang字节码</h4><p>有两种生成方式，生成的结果也不太一样</p>
 <ol>
 <li>从源码生成抽象码. erlc +”‘S’” mod.erl, 生成mod.S</li>
 <li>从beam生成Opcode. 未公开的功能. erts_debug:df 参数M或者 M, F, 生成mod.dis</li>
 </ol>
 <p>第一种前面已经给出了<code>erlc +&quot;&#39;S&#39;&quot; test.erl</code><br>第二种进入erl控制台之后，如下命令，可生成test.dis文件，打开看是类似汇编代码的东西，看着头疼。。。</p>
 <figure class="highlight erlang-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt;Erlang/OTP <span class="number">17</span> [erts-<span class="number">6.4</span>] [source] [<span class="number">64</span>-bit] [smp:<span class="number">8</span>:<span class="number">8</span>] [async-threads:<span class="number">10</span>] [hipe] [kernel-poll:false] [dtrace]</span><br><span class="line"></span><br><span class="line">Eshell V6.<span class="number">4</span>  (abort with ^G)</span><br><span class="line"><span class="meta">1&gt; </span>erts_debug:df(test).</span><br><span class="line">ok</span><br></pre></td></tr></table></figure>
-<p>参考：<br><a href="http://erlangdisplay.iteye.com/blog/1214167" target="_blank" rel="external">http://erlangdisplay.iteye.com/blog/1214167</a><br><a href="http://www.cnblogs.com/bozhang/articles/3115220.html" target="_blank" rel="external">http://www.cnblogs.com/bozhang/articles/3115220.html</a><br><a href="http://blog.yufeng.info/archives/498" target="_blank" rel="external">http://blog.yufeng.info/archives/498</a><br><a href="http://www.erlang.org/doc/man/erlang.html#process_info-1" target="_blank" rel="external">http://www.erlang.org/doc/man/erlang.html#process_info-1</a></p>
+<p>参考：<br><a href="http://erlangdisplay.iteye.com/blog/1214167" target="_blank" rel="noopener">http://erlangdisplay.iteye.com/blog/1214167</a><br><a href="http://www.cnblogs.com/bozhang/articles/3115220.html" target="_blank" rel="noopener">http://www.cnblogs.com/bozhang/articles/3115220.html</a><br><a href="http://blog.yufeng.info/archives/498" target="_blank" rel="noopener">http://blog.yufeng.info/archives/498</a><br><a href="http://www.erlang.org/doc/man/erlang.html#process_info-1" target="_blank" rel="noopener">http://www.erlang.org/doc/man/erlang.html#process_info-1</a></p>
 
 	
 	</div>
@@ -256,16 +303,16 @@
   <div class="row">
 	
 	
-		<p>看到一个<a href="http://www.iroowe.com/about/" target="_blank" rel="external">blog</a>在关于我得联系方式中写得是：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> YmVzdGx1b2xpd2VAZ21haWwuY29tCg== | openssl base64 <span class="_">-d</span></span><br></pre></td></tr></table></figure>
+		<p>看到一个<a href="http://www.iroowe.com/about/" target="_blank" rel="noopener">blog</a>在关于我得联系方式中写得是：</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">echo <span class="attribute">YmVzdGx1b2xpd2VAZ21haWwuY29tCg</span>== | openssl base64 -d</span><br></pre></td></tr></table></figure>
 <p>看起来很高大上的样子!!!<br>其实是利用base64的加密算法隐藏了自己的邮箱，先加密得到一个字符串<br>终端执行如下：</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">➜  ~  echo bestluoliwe<span class="variable">@gmail</span>.com | openssl base64</span><br><span class="line">YmVzdGx1b2xpd2VAZ21haWwuY29tCg==</span><br><span class="line">➜  ~  echo YmVzdGx1b2xpd2VAZ21haWwuY29tCg== | openssl base64 -d</span><br><span class="line">bestluoliwe<span class="variable">@gmail</span>.com</span><br><span class="line">➜  ~</span><br></pre></td></tr></table></figure>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">➜  ~  echo bestluoliwe@gmail.com | openssl base64</span><br><span class="line"><span class="attribute">YmVzdGx1b2xpd2VAZ21haWwuY29tCg</span>==</span><br><span class="line">➜  ~  echo <span class="attribute">YmVzdGx1b2xpd2VAZ21haWwuY29tCg</span>== | openssl base64 -d</span><br><span class="line">bestluoliwe@gmail.com</span><br><span class="line">➜  ~</span><br></pre></td></tr></table></figure>
 <p>也可以使用其他加密方式，比如<code>aes-128-cbc</code>, <code>des3</code></p>
 <figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">➜  openssl <span class="keyword">enc</span> -aes-128-cbc -<span class="keyword">in</span> a.<span class="keyword">log</span> -<span class="keyword">out</span> b.<span class="built_in">log</span></span><br><span class="line">enter aes-128-cbc encryption password:</span><br><span class="line">Verifying - enter aes-128-cbc encryption password:</span><br><span class="line">➜  openssl <span class="keyword">enc</span> -<span class="keyword">d</span> -aes-128-cbc -<span class="keyword">in</span> b.<span class="keyword">log</span> -<span class="keyword">out</span> c.<span class="built_in">log</span></span><br><span class="line">enter aes-128-cbc decryption password:</span><br><span class="line">➜  tail c.<span class="built_in">log</span></span><br><span class="line">king</span><br><span class="line">➜  tail a.<span class="built_in">log</span></span><br><span class="line">king</span><br><span class="line">➜  tail b.<span class="built_in">log</span></span><br><span class="line">Salted__��!����6L0��V��<span class="keyword">L</span>/�rD%                                                                                                     ➜</span><br></pre></td></tr></table></figure>
 <p>这个地方加密出来的字符</p>
-<p>看别人blog的时候经常看到md5这个词眼，我记得md5不属于加密解密的范围，但是百度md5的时候出现了很多md5解密网站，再深究一下这些网站应该是暴力匹配的破解方法，就是讲很多密码组合的md5求出来，当用户输入md5码的时候反向查找的方法，可以看看知乎上的回答<a href="https://www.zhihu.com/question/22651987" target="_blank" rel="external">为什么说 MD5 是不可逆的？</a></p>
+<p>看别人blog的时候经常看到md5这个词眼，我记得md5不属于加密解密的范围，但是百度md5的时候出现了很多md5解密网站，再深究一下这些网站应该是暴力匹配的破解方法，就是讲很多密码组合的md5求出来，当用户输入md5码的时候反向查找的方法，可以看看知乎上的回答<a href="https://www.zhihu.com/question/22651987" target="_blank" rel="noopener">为什么说 MD5 是不可逆的？</a></p>
 <p>md5只是提取特征码，理论上不同文件的md5相同概率极小，所以用来做文件校验，给文件的同时给出md5码，防止被篡改，同样的还有sum、cksum、md5sum、sha1sum等等</p>
-<p>下面是来自<a href="http://blog.sina.com.cn/s/blog_702c2db50100pjn7.html" target="_blank" rel="external">夜莺的博客</a></p>
+<p>下面是来自<a href="http://blog.sina.com.cn/s/blog_702c2db50100pjn7.html" target="_blank" rel="noopener">夜莺的博客</a></p>
 <ol>
 <li><p>base64编码/解码<br>谈到命令行下怎样发送邮件附件，很多人想起了uuencode。也能够使用base64编码。以下是openssl base64编码/解码的使用：<br>$ openssl base64   filename.txt<br>$ openssl base64 -d   filename.bin</p>
 </li>
@@ -299,7 +346,7 @@
 	
 		<p>看一些源码中经常出现#define中带有#或者##，查过很多次，每次都记不住。。</p>
 <p>首先define是在预编译的时候做代码替换的<br><strong>1. 单个#表示字符串化，e.g. <code>#A</code>就相当于JAVA中的<code>(&quot;&quot;+A)</code>的意思</strong><br><strong>2. 双个##表示连接，e.g. <code>A##bc</code>替换之后相当于<code>Abc</code></strong></p>
-<p>运行下下面代码就清晰了：<br><figure class="highlight cs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#include &lt;iostream&gt;</span></span><br><span class="line"><span class="meta">#include &lt;string&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="title">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> OUTPUT(A) cout&lt;&lt;#A&lt;&lt;":"&lt;&lt;(A)&lt;&lt;endl;</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CHAR(A) st##A</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FUNC_NAME(A, B) fun##A(B)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">funName</span>(<span class="params"><span class="keyword">string</span> name</span>) </span>&#123; OUTPUT(name); &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">funAge</span>(<span class="params"><span class="keyword">int</span> age</span>) </span>&#123; OUTPUT(age); &#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">1</span>, b = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">string</span> str = <span class="string">"name"</span>;</span><br><span class="line"></span><br><span class="line">    OUTPUT(a);</span><br><span class="line">    OUTPUT(b);</span><br><span class="line">    OUTPUT(a + b);</span><br><span class="line">    OUTPUT(str);</span><br><span class="line"></span><br><span class="line">    OUTPUT(CHAR(r));</span><br><span class="line">    <span class="comment">//cout&lt;&lt;#CHAR(r)&lt;&lt;":"&lt;&lt;(CHAR(r))&lt;&lt;endl</span></span><br><span class="line">    <span class="comment">//cout&lt;&lt;#CHAR(r)&lt;&lt;":"&lt;&lt;(str)&lt;&lt;endl</span></span><br><span class="line">    cout &lt;&lt; <span class="string">"CHAR(r)"</span> &lt;&lt; <span class="string">":"</span> &lt;&lt; (str) &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    FUNC_NAME(Name, <span class="string">"king"</span>);</span><br><span class="line">    FUNC_NAME(Age, <span class="number">12</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>运行下下面代码就清晰了：<br><figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> OUTPUT(A) cout&lt;&lt;#A&lt;&lt;<span class="meta-string">":"</span>&lt;&lt;(A)&lt;&lt;endl;</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CHAR(A) st##A</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> FUNC_NAME(A, B) fun##A(B)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> funName(<span class="keyword">string</span> name) &#123; <span class="literal">OUTPUT</span>(name); &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">void</span> funAge(<span class="keyword">int</span> age) &#123; <span class="literal">OUTPUT</span>(age); &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> main() &#123;</span><br><span class="line">    <span class="keyword">int</span> a = <span class="number">1</span>, b = <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">string</span> str = <span class="string">"name"</span>;</span><br><span class="line"></span><br><span class="line">    <span class="literal">OUTPUT</span>(a);</span><br><span class="line">    <span class="literal">OUTPUT</span>(b);</span><br><span class="line">    <span class="literal">OUTPUT</span>(a + b);</span><br><span class="line">    <span class="literal">OUTPUT</span>(str);</span><br><span class="line"></span><br><span class="line">    <span class="literal">OUTPUT</span>(CHAR(r));</span><br><span class="line">    <span class="comment">//cout&lt;&lt;#CHAR(r)&lt;&lt;":"&lt;&lt;(CHAR(r))&lt;&lt;endl</span></span><br><span class="line">    <span class="comment">//cout&lt;&lt;#CHAR(r)&lt;&lt;":"&lt;&lt;(str)&lt;&lt;endl</span></span><br><span class="line">    cout &lt;&lt; <span class="string">"CHAR(r)"</span> &lt;&lt; <span class="string">":"</span> &lt;&lt; (str) &lt;&lt; endl;</span><br><span class="line"></span><br><span class="line">    FUNC_NAME(Name, <span class="string">"king"</span>);</span><br><span class="line">    FUNC_NAME(Age, <span class="number">12</span>);</span><br><span class="line">    <span class="built_in">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>运行结果是：<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">a</span>:<span class="number">1</span></span><br><span class="line"><span class="selector-tag">b</span>:<span class="number">2</span></span><br><span class="line"><span class="selector-tag">a</span> + <span class="selector-tag">b</span>:<span class="number">3</span></span><br><span class="line">str:name</span><br><span class="line"><span class="function"><span class="title">CHAR</span><span class="params">(r)</span></span>:name</span><br><span class="line"><span class="function"><span class="title">CHAR</span><span class="params">(r)</span></span>:name</span><br><span class="line">name:king</span><br><span class="line">age:<span class="number">12</span></span><br></pre></td></tr></table></figure></p>
 
 	
@@ -323,8 +370,8 @@
 	
 	
 		<p>linux中的free命令可以查看内存使用情况，带参数<code>-m</code>表示按照Mb为单位输出，也可以带其他参数</p>
-<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fruits<span class="variable">@100:</span>~$ free -m</span><br><span class="line">             total       used       free     shared    buffers     cached</span><br><span class="line"><span class="attribute">Mem</span>:         <span class="number">16002</span>      <span class="number">15476</span>        <span class="number">526</span>          <span class="number">0</span>        <span class="number">410</span>       <span class="number">5257</span></span><br><span class="line">-/+ buffers/<span class="attribute">cache</span>:       <span class="number">9808</span>       <span class="number">6194</span></span><br><span class="line"><span class="attribute">Swap</span>:        <span class="number">16336</span>      <span class="number">15005</span>       <span class="number">1331</span></span><br><span class="line">fruits<span class="variable">@100</span>:~$</span><br></pre></td></tr></table></figure>
-<h3 id="第二行：">第二行：</h3><ol>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fruits@100:~$ free -m</span><br><span class="line">             total       used       free     shared    buffers     cached</span><br><span class="line">Mem:        <span class="number"> 16002 </span>    <span class="number"> 15476 </span>      <span class="number"> 526 </span>        <span class="number"> 0 </span>      <span class="number"> 410 </span>      5257</span><br><span class="line">-/+ buffers/cache:      <span class="number"> 9808 </span>      6194</span><br><span class="line">Swap:       <span class="number"> 16336 </span>    <span class="number"> 15005 </span>      1331</span><br><span class="line">fruits@100:~$</span><br></pre></td></tr></table></figure>
+<h3 id="第二行："><a href="#第二行：" class="headerlink" title="第二行："></a>第二行：</h3><ol>
 <li>total <code>16002</code>：总内存大小，可以认为就是机器的内存条大小</li>
 <li>used <code>15476</code>：系统内核认为已使用的内存，是系统认为的占用内存，其实有些可以不算</li>
 <li>free <code>526</code>：系统内核认为的空闲内存，完全空闲</li>
@@ -332,15 +379,15 @@
 <li>buffers/cached <code>410/5257</code>：缓存</li>
 </ol>
 <p><strong>从内核角度看内存: total = userd + free</strong></p>
-<h3 id="第三行：">第三行：</h3><ol>
+<h3 id="第三行："><a href="#第三行：" class="headerlink" title="第三行："></a>第三行：</h3><ol>
 <li><strong>used <code>9808</code>：</strong>从应用角度看是已分配的内存（不可能再分配给我了），等于第二行中的<strong>used - buffers - cached</strong></li>
 <li><strong>free <code>6194</code>：</strong>从应用角度看是还可能给我的总内存，等于第二行中得<strong>free + buffers + cached</strong></li>
 </ol>
 <p><strong>从应用角度看内存：系统占用了9808M内存，能给我的内存是6194M</strong></p>
 <p>参考：</p>
 <ol>
-<li><a href="http://itlab.idcquan.com/linux/set/935456.html" target="_blank" rel="external">http://itlab.idcquan.com/linux/set/935456.html</a></li>
-<li><a href="http://www.cnblogs.com/coldplayerest/archive/2010/02/20/1669949.html" target="_blank" rel="external">http://www.cnblogs.com/coldplayerest/archive/2010/02/20/1669949.html</a></li>
+<li><a href="http://itlab.idcquan.com/linux/set/935456.html" target="_blank" rel="noopener">http://itlab.idcquan.com/linux/set/935456.html</a></li>
+<li><a href="http://www.cnblogs.com/coldplayerest/archive/2010/02/20/1669949.html" target="_blank" rel="noopener">http://www.cnblogs.com/coldplayerest/archive/2010/02/20/1669949.html</a></li>
 </ol>
 
 	
@@ -369,7 +416,7 @@
 <li>使用<code>brew install erl</code>再选择version的方法<br><code>brew install homebrew/versions/erlang-r17</code><br>好像erlang的官网被墙，最后最是在下载man这一步死掉</li>
 </ul>
 <p>后面有尝试下载源代码的方式</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget http://www.erlang.org/download/otp_src_17.5.tar.gz</span><br><span class="line">tar -zxvf otp_src_17.5.tar.gz</span><br><span class="line">cd otp_src_17.5</span><br><span class="line">sudo ./configure  --prefix=/opt/erlang</span><br><span class="line">sudo make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">wget http://www.erlang.org/download/otp_src_17.5.tar.gz</span><br><span class="line">tar -zxvf otp_src_17.5.tar.gz</span><br><span class="line">cd otp_src_17.5</span><br><span class="line">sudo ./configure  --prefix=/opt/erlang</span><br><span class="line">sudo make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
 <p>但在执行config的时候出现下面情况</p>
 <blockquote>
 <hr>
@@ -379,11 +426,11 @@
 <hr>
 </blockquote>
 <p>即表示openssl没有安装，但是自己调用openssl是ok的。。</p>
-<p>找来找去<br>最后在<a href="https://github.com/elixir-lang/elixir/issues/1748" target="_blank" rel="external">github上的一个帖子</a><br>的最后找到openssl的问题，使用如下命令：</p>
+<p>找来找去<br>最后在<a href="https://github.com/elixir-lang/elixir/issues/1748" target="_blank" rel="noopener">github上的一个帖子</a><br>的最后找到openssl的问题，使用如下命令：</p>
 <figure class="highlight crystal"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install -vd --<span class="keyword">with</span>-ssl=<span class="regexp">/usr/bin</span><span class="regexp">/openssl homebrew/versions</span><span class="regexp">/erlang-r17</span></span><br></pre></td></tr></table></figure>
 <p>中途也会卡在man和html的地方，我直接选择ignore的方式，最后居然成功了，。。。</p>
 <hr>
-<p>以上是MAC下安装经历的问题，如果是在ubuntu下面，遇到类似的bug，下面这个链接可能有所帮助<br><a href="https://sites.google.com/site/comptekkia/erlang/how-to-install-erlang-on-ubuntu-10-10" target="_blank" rel="external">How to Install Erlang on Ubuntu 10.10</a></p>
+<p>以上是MAC下安装经历的问题，如果是在ubuntu下面，遇到类似的bug，下面这个链接可能有所帮助<br><a href="https://sites.google.com/site/comptekkia/erlang/how-to-install-erlang-on-ubuntu-10-10" target="_blank" rel="noopener">How to Install Erlang on Ubuntu 10.10</a></p>
 
 	
 	</div>
@@ -405,7 +452,7 @@
   <div class="row">
 	
 	
-		<p>官网的做法如下：<br><a href="http://developer.android.com/sdk/installing/installing-adt.html" target="_blank" rel="external">http://developer.android.com/sdk/installing/installing-adt.html</a></p>
+		<p>官网的做法如下：<br><a href="http://developer.android.com/sdk/installing/installing-adt.html" target="_blank" rel="noopener">http://developer.android.com/sdk/installing/installing-adt.html</a></p>
 <ol>
 <li><p>Download the ADT Plugin zip file (do not unpack it):</p>
 </li>
@@ -424,38 +471,6 @@
 	
 	</div>
   <a type="button" href="/Eclipse-ADT-安装/#more" class="btn btn-default more">阅读此文</a>
-</div>
-
-		
-			
-	
-	<!-- display as entry -->	
-		<h3 class="title">
-			<div class="date"> 2015-11-10 </div>
-			<div class="article-title"><a href="/Mac-Android-ADB环境变量设置/" >Mac Android ADB环境变量设置</a></div>						
-		</h3>
-	
-
-
-			<div class="entry">
-  <div class="row">
-	
-	
-		<ol>
-<li>启动Terminal终端工具</li>
-<li>输入cd ~/ 进入当前用户的home目录</li>
-<li>vim .bash_profile</li>
-<li><p>在文件尾部加入以下内容：</p>
-<pre><code>export <span class="constant">PATH=</span><span class="variable">${</span><span class="constant">PATH}</span><span class="symbol">:/android_sdk/tools</span><span class="symbol">:/android_sdk/platform-tools</span>
-</code></pre></li>
-<li><p>终端执行 <code>source .bash_profile</code> </p>
-</li>
-<li>验证：输入adb回车。如果未显示command not found，说明此命令有效，环境便亮设置完成。</li>
-</ol>
-
-	
-	</div>
-  <a type="button" href="/Mac-Android-ADB环境变量设置/#more" class="btn btn-default more">阅读此文</a>
 </div>
 
 		
@@ -507,7 +522,7 @@
 		<h4>分类</h4>
 		<ul class="tag_box inline list-unstyled">
 		
-			<li><a href="/categories/DoodleMobile/">DoodleMobile<span>0</span></a></li>
+			<li><a href="/categories/DOODLE/">DOODLE<span>1</span></a></li>
 		
 			<li><a href="/categories/Mac/">Mac<span>1</span></a></li>
 		
@@ -534,48 +549,44 @@
 		<h4>标签云</h4>
 		<ul class="tag_box inline list-unstyled">		
 		
-			<li><a href="/tags/环境配置/">环境配置<span>2</span></a></li>
-		
-			<li><a href="/tags/字符串/">字符串<span>1</span></a></li>
-		
-			<li><a href="/tags/erlang/">erlang<span>2</span></a></li>
-		
-			<li><a href="/tags/c/">c++<span>1</span></a></li>
-		
-			<li><a href="/tags/DoodleMobile/">DoodleMobile<span>0</span></a></li>
-		
-			<li><a href="/tags/gradle/">gradle<span>0</span></a></li>
-		
-			<li><a href="/tags/Manacher/">Manacher<span>1</span></a></li>
-		
-			<li><a href="/tags/Mac/">Mac<span>1</span></a></li>
-		
-			<li><a href="/tags/后缀数组/">后缀数组<span>1</span></a></li>
-		
-			<li><a href="/tags/ACM/">ACM<span>2</span></a></li>
-		
-			<li><a href="/tags/git/">git<span>1</span></a></li>
-		
-			<li><a href="/tags/bs4/">bs4<span>1</span></a></li>
+			<li><a href="/tags/Android/">Android<span>2</span></a></li>
 		
 			<li><a href="/tags/跑步/">跑步<span>1</span></a></li>
 		
-			<li><a href="/tags/unity-ads/">unity-ads<span>0</span></a></li>
-		
 			<li><a href="/tags/回文串/">回文串<span>1</span></a></li>
+		
+			<li><a href="/tags/DOODLE/">DOODLE<span>1</span></a></li>
+		
+			<li><a href="/tags/bug/">bug<span>1</span></a></li>
+		
+			<li><a href="/tags/c/">c++<span>1</span></a></li>
+		
+			<li><a href="/tags/python/">python<span>1</span></a></li>
+		
+			<li><a href="/tags/git/">git<span>1</span></a></li>
+		
+			<li><a href="/tags/erlang/">erlang<span>2</span></a></li>
+		
+			<li><a href="/tags/POJ/">POJ<span>2</span></a></li>
 		
 			<li><a href="/tags/Homebrew/">Homebrew<span>1</span></a></li>
 		
 			<li><a href="/tags/linux/">linux<span>1</span></a></li>
 		
-			<li><a href="/tags/Android/">Android<span>2</span></a></li>
+			<li><a href="/tags/Mac/">Mac<span>1</span></a></li>
 		
-			<li><a href="/tags/bug/">bug<span>1</span></a></li>
+			<li><a href="/tags/环境配置/">环境配置<span>2</span></a></li>
 		
-			<li><a href="/tags/POJ/">POJ<span>2</span></a></li>
+			<li><a href="/tags/字符串/">字符串<span>1</span></a></li>
 		
+			<li><a href="/tags/Manacher/">Manacher<span>1</span></a></li>
 		
-		   <li><a href="/tags">...<span>21</span></a></li>
+			<li><a href="/tags/bs4/">bs4<span>1</span></a></li>
+		
+			<li><a href="/tags/后缀数组/">后缀数组<span>1</span></a></li>
+		
+			<li><a href="/tags/ACM/">ACM<span>2</span></a></li>
+		
 		 
 		</ul>
 	</div>
@@ -586,6 +597,10 @@
 <div class="widget">
   <h4>最新文章</h4>
   <ul class="entry list-unstyled">
+    
+      <li>
+        <a href="/unityads添加/" ><i class="fa fa-file-o"></i>android工程添加unityads</a>
+      </li>
     
       <li>
         <a href="/homebrew-update-bug/" ><i class="fa fa-file-o"></i>Homebrew 更新Bug</a>
@@ -601,10 +616,6 @@
     
       <li>
         <a href="/erlang-call-last/" ><i class="fa fa-file-o"></i>关于erlang尾递归</a>
-      </li>
-    
-      <li>
-        <a href="/encode-decode/" ><i class="fa fa-file-o"></i>关于加密解密的一些事</a>
       </li>
     
   </ul>
@@ -637,7 +648,7 @@
   </div>
   <div class="container-narrow">
   <footer> <p>
-  &copy; 2016 bigstupidx
+  &copy; 2018 bigstupidx
   
       with help from <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="http://getbootstrap.com/" target="_blank">Twitter Bootstrap</a>. Theme by <a href="http://github.com/wzpan/hexo-theme-freemind/">Freemind</a>.    
 </p> </footer>
@@ -666,15 +677,6 @@
 </script>
 
 
-
-   <script type="text/javascript">      
-     var search_path = "search.xml";
-	 if (search_path.length == 0) {
-	 	search_path = "search.xml";
-	 }
-	 var path = "/" + search_path;
-     searchFunc(path, 'local-search-input', 'local-search-result');
-   </script>
 
 </body>
    </html>
